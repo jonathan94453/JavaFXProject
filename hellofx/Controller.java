@@ -10,7 +10,7 @@ public class Controller{
     private Label label;
 
     public void initialize() {
-       label.setText("We did it boys");
+       label.setText("Hello World");
        info o = new info(label); 
        o.returnlabel(); 
     }

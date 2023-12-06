@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "helloworld",
+            "request": "launch",
+            "mainClass": "helloworld",
+            "projectName": "JavaFXProject_ce1c5267"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "hellofx.Main",
+            "projectName": "pythoncode_ce1c5267"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "hellofx.Main",
@@ -30,7 +44,7 @@
             "request": "launch",
             "mainClass": "fx",
             "projectName": "pythoncode_3e26253f",
-            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"C:/JONATHAN/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
