@@ -8,10 +8,10 @@ public class Controller{
 
     @FXML
     private Label label;
-    
 
     public void initialize() {
-        label.setText("We did it boys");
-        
+       label.setText("We did it boys");
+       info o = new info(label); 
+       o.returnlabel(); 
     }
 }
