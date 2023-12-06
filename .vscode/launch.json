@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "hellofx.Main",
+            "projectName": "JavaFXProject_ce1c5267"
+        },
+        {
+            "type": "java",
             "name": "helloworld",
             "request": "launch",
             "mainClass": "helloworld",
