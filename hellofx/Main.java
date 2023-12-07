@@ -15,11 +15,14 @@ import javafx.scene.layout.TilePane;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Label label1 = new Label("Button not Selected"); 
+        Label label1 = new Label(); 
         Button clickstart = new Button(); 
+        TilePane r = new TilePane(); 
         clickstart.setText("Start the Program!");
         clickstart.setTranslateX(350.0);
         clickstart.setTranslateY(400.0);
+        clickstart.setMinWidth(800);
+        clickstart.setMinHeight(800);
         TilePane r = new TilePane(); 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
@@ -30,7 +33,7 @@ public class Main extends Application {
         clickstart.setOnAction(event); 
         r.getChildren().add(clickstart); 
         r.getChildren().add(label1); 
-        Scene scene2 = new Scene(r, 400, 400); 
+        Scene scene2 = new Scene(r, 900, 900, Color.BEIGE); 
         primaryStage.setScene(scene2);
         primaryStage.show(); 
     }
