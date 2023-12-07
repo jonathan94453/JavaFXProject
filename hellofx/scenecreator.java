@@ -1,16 +1,11 @@
 package hellofx; 
 
 import javafx.event.EventHandler;
-
-import javafx.application.Application;
+import javafx.scene.text.Font;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color; 
-import javafx.scene.Group; 
 import javafx.scene.layout.TilePane;
 import javafx.scene.control.Label;
 
@@ -31,12 +26,15 @@ public class scenecreator {
         button.setTranslateY(50);
         button.setMinWidth(50);
         button.setMinHeight(50);
+    Font labelfont = new Font("Arial", 18); 
+
 
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
             {   
                 label.setText("   button   selected    "); 
+                label.setFont(labelfont); 
             } 
         };
         button.setOnAction(event); 
