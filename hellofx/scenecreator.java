@@ -27,10 +27,10 @@ public class scenecreator {
     
     public Scene createscene() {
         button.setText("Start the Program!");
-        button.setTranslateX(350.0);
-        button.setTranslateY(400.0);
-        button.setMinWidth(400);
-        button.setMinHeight(500);
+        button.setTranslateX(50);
+        button.setTranslateY(50);
+        button.setMinWidth(50);
+        button.setMinHeight(50);
 
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
@@ -42,7 +42,7 @@ public class scenecreator {
         button.setOnAction(event); 
         tilepane.getChildren().add(button); 
         tilepane.getChildren().add(label); 
-        Scene scene2 = new Scene(tilepane, 900, 900, Color.BEIGE);
+        Scene scene2 = new Scene(tilepane, 500, 500, Color.BEIGE);
         return scene2; 
     }
 
