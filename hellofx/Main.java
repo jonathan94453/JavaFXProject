@@ -18,28 +18,9 @@ public class Main extends Application {
         Label label1 = new Label(); 
         Button clickstart = new Button(); 
         TilePane r = new TilePane();
-        Controller o = new Controller(label1, clickstart, r); 
 
-
-        // primaryStage.setScene(scene2);
-        // primaryStage.show(); 
-        clickstart.setText("Start the Program!");
-        clickstart.setTranslateX(350.0);
-        clickstart.setTranslateY(400.0);
-        clickstart.setMinWidth(800);
-        clickstart.setMinHeight(800);
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
-            public void handle(ActionEvent e) 
-            { 
-                label1.setText("   button   selected    "); 
-            } 
-        };
-        clickstart.setOnAction(event); 
-        r.getChildren().add(clickstart); 
-        r.getChildren().add(label1); 
-        Scene scene2 = new Scene(r, 900, 900, Color.BEIGE);
-        
-        primaryStage.setScene(scene2); 
+scenecreator o = new scenecreator(label1, clickstart, r); 
+        primaryStage.setScene(o.createscene()); 
         primaryStage.show(); 
     }
 

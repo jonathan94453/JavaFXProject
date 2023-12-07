@@ -1,5 +1,5 @@
 package hellofx;
-import java.beans.EventHandler;
+import javafx.event.EventHandler;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -28,18 +28,21 @@ public class scenecreator {
         button.setText("Start the Program!");
         button.setTranslateX(350.0);
         button.setTranslateY(400.0);
-        button.setMinWidth(800);
-        button.setMinHeight(800);
+        button.setMinWidth(400);
+        button.setMinHeight(500);
+
+
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
-            { 
+            {   
                 label.setText("   button   selected    "); 
             } 
         };
         button.setOnAction(event); 
         tilepane.getChildren().add(button); 
         tilepane.getChildren().add(label); 
-        Scene scene2 = new Scene(r, 900, 900, Color.BEIGE);
+        Scene scene2 = new Scene(tilepane, 900, 900, Color.BEIGE);
+        return scene2; 
     }
 
 }
