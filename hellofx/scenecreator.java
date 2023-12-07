@@ -1,4 +1,5 @@
-package hellofx;
+package hellofx; 
+
 import javafx.event.EventHandler;
 
 import javafx.application.Application;
