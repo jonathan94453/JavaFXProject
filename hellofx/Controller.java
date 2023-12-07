@@ -2,6 +2,9 @@ package hellofx;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
+import java.beans.EventHandler;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,14 +20,13 @@ public class Controller{
 
     @FXML
     private Label label;
-    private Button startbutton;
+    private Button Buttonstart;
+
     
-public void handlebuttonpress(ActionEvent event) {
-    
-}
 
     public void initialize() {
        label.setText("Logan is gay");
-       handlebuttonpress(startbutton); 
+        
+       
     }
 }
