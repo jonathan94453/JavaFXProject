@@ -26,5 +26,6 @@
         "c:\\JONATHAN\\javafx-sdk-21.0.1\\lib\\javafx.fxml.jar",
         "c:\\JONATHAN\\javafx-sdk-21.0.1\\lib\\javafx.graphics.jar"
     ],
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "cmake.configureOnOpen": true
 }
