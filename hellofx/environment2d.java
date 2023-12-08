@@ -1,5 +1,9 @@
 package hellofx;
 import javafx.event.EventHandler;
+
+
+import javafx.stage.Stage;
+import hellofx.Layer_1.ChooseStart;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -16,12 +20,14 @@ public class environment2d {
     private double sceneheight;
     private Label title;
     private Button start;
+    private Stage primarystage; 
 
-    public environment2d(double scenewidth, double sceneheight, Label title, Button start) {
+    public environment2d(double scenewidth, double sceneheight, Label title, Button start, Stage primarystage) {
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight;
         this.title = title;
-        this.start = start;  
+        this.start = start;
+        this.primarystage = primarystage; 
         intialize(); 
     }
 
@@ -50,9 +56,10 @@ public class environment2d {
             backgroundview.setFitHeight(sceneheight);
             backgroundview.setFitWidth(scenewidth);
             title.setFont(titlefont); 
-            title.setLayoutX(50);
+            title.setLayoutX(30);
             title.setLayoutY(100);
             //Layouts the start button
+            start.setOnAction(choosestart);
             start.setLayoutX(330);
             start.setLayoutY(sceneheight/2);
 //Size of the button
@@ -75,5 +82,12 @@ public class environment2d {
             public void handle(ActionEvent e) {
                 javafx.application.Platform.exit();
             }
-    }; 
+    };
+    EventHandler<ActionEvent> choosestart = new EventHandler<ActionEvent>() {
+        public void handle(ActionEvent e) {
+        Button continuegameButton = new Button("Continue to Eutopia!"); 
+        ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, continuegameButton);
+        primarystage.setScene(scene2.getscene()); 
+}
+}; 
 }
