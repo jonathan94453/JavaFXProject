@@ -9,7 +9,7 @@ import javafx.scene.layout.TilePane;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Label label1 = new Label(); 
+        Label label1 = new Label("What should I say?"); 
         Button clickstart = new Button(); 
         TilePane r = new TilePane();
 

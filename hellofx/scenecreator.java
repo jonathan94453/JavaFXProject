@@ -33,7 +33,7 @@ public class scenecreator {
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
             public void handle(ActionEvent e) 
             {   
-                label.setText("   button   selected    "); 
+                label.setText("   Hello World   "); 
                 label.setFont(labelfont); 
             } 
         };
