@@ -1,10 +1,14 @@
 package hellofx;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+
 public class environment2d {
     private Group root; 
     private Scene scene;
@@ -29,15 +33,27 @@ public class environment2d {
     }
     
     private void setstart(String environmentimage) {
+        //Creates image handlers for the background image
             Image backgroundimage = new Image(getClass().getResourceAsStream(environmentimage));
             ImageView backgroundview = new ImageView(backgroundimage); 
+            //Font object for the TITLE FONT
+            Font titlefont = Font.loadFont(getClass().getResourceAsStream("/PAC-FONT.TTF"), 40); 
+        //Adds the quit button
+            Button quit = new Button("Quit"); 
 
+// When quit is clicked- call the choosequit event handler. 
+
+//Set Layout of everything
+            quit.setOnAction(choosequit);
+            quit.setLayoutX(360);
+            quit.setLayoutY(sceneheight/2 + 80);
             backgroundview.setFitHeight(sceneheight);
             backgroundview.setFitWidth(scenewidth);
-            title.setLayoutX(scenewidth/2);
+            title.setFont(titlefont); 
+            title.setLayoutX(50);
             title.setLayoutY(100);
             //Layouts the start button
-            start.setLayoutX(360);
+            start.setLayoutX(330);
             start.setLayoutY(sceneheight/2);
 //Size of the button
             start.setMinWidth(100);
@@ -47,8 +63,17 @@ public class environment2d {
             root.getChildren().add(backgroundview); 
             root.getChildren().add(title);
             root.getChildren().add(start); 
+            root.getChildren().add(quit); 
     }
     public Scene getScene() {
         return scene; 
     }
+
+
+
+    EventHandler<ActionEvent> choosequit = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                javafx.application.Platform.exit();
+            }
+    }; 
 }
