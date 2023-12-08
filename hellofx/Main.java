@@ -9,12 +9,12 @@ import javafx.scene.layout.TilePane;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Label label1 = new Label(); 
-        Button clickstart = new Button(); 
-        TilePane r = new TilePane();
-
-scenecreator o = new scenecreator(label1, clickstart, r); 
-        primaryStage.setScene(o.createscene()); 
+double scenewidth = 800;
+double sceneheight = 800; 
+Label Titlelabel = new Label("Welcome to Eutopia"); 
+Button Start = new Button(); 
+environment2d background = new environment2d(scenewidth, sceneheight, Titlelabel, Start); 
+primaryStage.setScene(background.getScene());
         primaryStage.show(); 
     }
 
