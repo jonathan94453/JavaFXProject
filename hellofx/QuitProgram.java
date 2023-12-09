@@ -78,7 +78,6 @@ public Scene getscene3() {
 
 EventHandler<ActionEvent> textfieldenter = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-        String user_input = textfield.getText();
         Label text = new Label();
         Font textfont = new Font("Arial", 30);
         text.setFont(textfont);

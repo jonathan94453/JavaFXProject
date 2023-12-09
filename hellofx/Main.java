@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.Scene; 
 
 
@@ -18,7 +19,7 @@ public class Main extends Application {
                 Button Start = new Button(); 
                 environment2d background = new environment2d(scenewidth, sceneheight, Titlelabel, Start, primaryStage); 
                 setcurrentscene(background.getScene()); 
-
+primaryStage.getIcons().add(new Image("/Scene2.jpg")); 
                     primaryStage.setTitle("Westrichia");
                     primaryStage.setScene(currentscene);
                     primaryStage.show(); 
