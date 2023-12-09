@@ -25,7 +25,7 @@ public class Controller{
     
 
     public void initialize() {
-       label.setText("Logan is gay");
+       label.setText("Logan is great person");
         
        
     }
