@@ -1,9 +1,6 @@
 package hellofx; 
 
-import hellofx.Layer_1.ChooseStart;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
                 
-                double scenewidth = 800;
+                double scenewidth = 800; 
                 double sceneheight = 800; 
                 Label Titlelabel = new Label("Welcome to Westrichia"); 
                 Button Start = new Button(); 

@@ -46,13 +46,15 @@ public class environment2d {
             Font titlefont = Font.loadFont(getClass().getResourceAsStream("/PAC-FONT.TTF"), 40); 
         //Adds the quit button
             Button quit = new Button("Quit"); 
+            Button ShowMap = new Button("Show Map"); 
 
 // When quit is clicked- call the choosequit event handler. 
 
 //Set Layout of everything
             quit.setOnAction(choosequit);
-            quit.setLayoutX(360);
-            quit.setLayoutY(sceneheight/2 + 80);
+            quit.setLayoutX(330);
+            quit.setLayoutY(sceneheight/2 + 90);
+            quit.setMinWidth(100);
             backgroundview.setFitHeight(sceneheight);
             backgroundview.setFitWidth(scenewidth);
             title.setFont(titlefont); 
@@ -66,27 +68,34 @@ public class environment2d {
             start.setMinWidth(100);
             start.setMaxHeight(100); 
             start.setText("Start the Game!");
+// Show map layout 
+            ShowMap.setLayoutX(330);
+            ShowMap.setLayoutY(sceneheight/2 + 40);
+            ShowMap.setMinWidth(100);
+            ShowMap.setMinHeight(-10); 
+
 // Adds it to the root group 
             root.getChildren().add(backgroundview); 
             root.getChildren().add(title);
             root.getChildren().add(start); 
             root.getChildren().add(quit); 
+            root.getChildren().add(ShowMap); 
     }
     public Scene getScene() {
         return scene; 
     }
 
 
-
+// Event handlers for the first page of the game 
     EventHandler<ActionEvent> choosequit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                javafx.application.Platform.exit();
+                QuitProgram quitgame = new QuitProgram(scenewidth, sceneheight, primarystage);
+                primarystage.setScene(quitgame.getscene3()); 
             }
     };
     EventHandler<ActionEvent> choosestart = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
-        Button continuegameButton = new Button("Continue to Eutopia!"); 
-        ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, continuegameButton);
+        ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth);
         primarystage.setScene(scene2.getscene()); 
 }
 }; 
