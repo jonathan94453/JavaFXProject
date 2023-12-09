@@ -9,17 +9,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javafx.scene.Scene; 
+import javafx.stage.Stage;
 
 public class ChooseStart {
     private double sceneheight;
     private double scenewidth;
 
     private Group root2;
-    private Scene scene2; 
+    private Scene scene2;
+    private Stage primaryStage;  
 
-    public ChooseStart(Double sceneheight, Double scenewidth) {
+    public ChooseStart(Double sceneheight, Double scenewidth, Stage primaryStage) {
         this.sceneheight = sceneheight;
         this.scenewidth = scenewidth; 
+        this.primaryStage = primaryStage; 
         initialize(); 
     }
     private void initialize() {
@@ -54,7 +57,7 @@ house.setMinHeight(165);
 imageview.setFitHeight(house.getMinHeight()); 
 imageview.setFitWidth(house.getMinWidth());
 house.setGraphic(imageview);
-
+house.setOnAction(choosehouse);
 ScaleTransition scaletransition = new ScaleTransition(Duration.millis(200), house);
 scaletransition.setFromX(1.0);
 scaletransition.setFromY(1.0);
@@ -94,7 +97,9 @@ scaletransition.play();
     };
     EventHandler<ActionEvent> choosehouse = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
-            //Create a new object and fill in the class 
+            ChooseHouse clickHouse = new ChooseHouse(scenewidth, sceneheight, primaryStage);
+            primaryStage.setScene(clickHouse.getscenehouse()); 
         }
     };
+    
 }

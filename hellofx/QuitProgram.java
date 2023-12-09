@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -39,6 +40,13 @@ public void intialize() {
 }
 
 public void setquitscene(String loganvideo) {
+    Font introlabelfont = new Font("Arial", 20);
+    Label introlabel = new Label("Enter the Reason to Quit");
+    introlabel.setFont(introlabelfont);
+    introlabel.setTextFill(Color.BLACK);
+    introlabel.setLayoutX(250);
+    introlabel.setLayoutY(0);
+
     File video = new File(loganvideo); 
     Media media = new Media(video.toURI().toString()); 
     
@@ -51,13 +59,15 @@ public void setquitscene(String loganvideo) {
     loganVideo.setFitWidth(scenewidth);
 
     textfield = new TextField();
-    textfield.setLayoutX(400);
-    textfield.setLayoutY(200);
+    textfield.setLayoutX(300);
+    textfield.setLayoutY(100);
+    textfield.setMinHeight(40);
     textfield.setPromptText("Why do you want to leave?");
     textfield.setOnAction(textfieldenter);
 
     root3.getChildren().add(loganVideo);
     root3.getChildren().add(textfield);
+    root3.getChildren().add(introlabel); 
     
     mediaPlayer.play();
 }
@@ -73,10 +83,11 @@ EventHandler<ActionEvent> textfieldenter = new EventHandler<ActionEvent>() {
         Font textfont = new Font("Arial", 30);
         text.setFont(textfont);
         text.setLayoutX(10);
-        text.setLayoutY(100);
-        text.setText("Really? Are you kidding me? -> You're so lame for this " + user_input);
+        text.setLayoutY(200);
+        text.setTextFill(Color.BLACK);
+        text.setText("Really? Are you kidding me? -> You're so lame for this ");
         root3.getChildren().add(text);
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(event -> {
             javafx.application.Platform.exit(); 
         });
