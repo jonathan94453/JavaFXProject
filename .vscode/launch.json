@@ -6,13 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "hellofx.Main",
-            "projectName": "JavaFXProject_1fe30e87"
-        },
-        {
-            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -22,8 +15,8 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "hellofx.Main",
-            "projectName": "JavaFXProject_ce1c5267",
-            "vmArgs": "--module-path \"C:/JONATHAN/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+            "projectName": "JavaFXProject_1fe30e87",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml" 
         }
     ]
 }
