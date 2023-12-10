@@ -70,6 +70,7 @@ public class environment2d {
             start.setText("Start the Game!");
 // Show map layout 
             ShowMap.setLayoutX(330);
+            ShowMap.setOnAction(Showthemap);
             ShowMap.setLayoutY(sceneheight/2 + 40);
             ShowMap.setMinWidth(100);
             ShowMap.setMinHeight(-10); 
@@ -93,10 +94,35 @@ public class environment2d {
                 primarystage.setScene(quitgame.getscene3()); 
             }
     };
+    EventHandler<ActionEvent> quitapplication = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                javafx.application.Platform.exit(); 
+            }
+    };
     EventHandler<ActionEvent> choosestart = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
         ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, primarystage, start, title); 
         primarystage.setScene(scene2.getscene()); 
 }
-}; 
+};
+    EventHandler<ActionEvent> Showthemap = new EventHandler<ActionEvent>() {
+        public void handle(ActionEvent e) {
+            Group maproot = new Group();
+            Scene map = new Scene(maproot, scenewidth, sceneheight);
+            Image backgroundimage = new Image(getClass().getResourceAsStream("/village.jpg"));
+            ImageView backgroundview = new ImageView(backgroundimage);
+            backgroundview.setFitHeight(sceneheight);
+            backgroundview.setFitWidth(scenewidth);
+            Button quit = new Button("Quit"); 
+            quit.setLayoutX(350);
+            quit.setLayoutY(100);
+            quit.setMinHeight(20);
+            quit.setMinWidth(100);
+            quit.setOnAction(quitapplication);
+            maproot.getChildren().add(backgroundview); 
+            maproot.getChildren().add(quit); 
+            primarystage.setScene(map);       
+
+        }
+    }; 
 }

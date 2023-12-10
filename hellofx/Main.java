@@ -17,9 +17,9 @@ public class Main extends Application {
                 double sceneheight = 800; 
                 Label Titlelabel = new Label("Welcome to Westrichia"); 
                 Button Start = new Button(); 
-                environment2d background = new environment2d(scenewidth, sceneheight, Titlelabel, Start, primaryStage); 
-                setcurrentscene(background.getScene()); 
-primaryStage.getIcons().add(new Image("/Scene2.jpg")); 
+                    environment2d background = new environment2d(scenewidth, sceneheight, Titlelabel, Start, primaryStage); 
+                    setcurrentscene(background.getScene()); 
+                    primaryStage.getIcons().add(new Image("/Scene2.jpg")); 
                     primaryStage.setTitle("Westrichia");
                     primaryStage.setScene(currentscene);
                     primaryStage.show(); 

@@ -49,7 +49,7 @@ private void initialize() {
 private void sethousescene(String image) {
 Question = new Label();
 Question.setText("What would you like to do? \nStudy or Play Fortnite?");
-Questionfont = Font.loadFont(getClass().getResourceAsStream("/PAC-FONT.TTF"), 15); 
+Questionfont = new Font("Arial", 15); 
 Question.setLayoutX(15);
 Question.setLayoutY(200);
 Question.setFont(Questionfont);
