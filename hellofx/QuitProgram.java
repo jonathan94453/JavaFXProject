@@ -1,5 +1,7 @@
 package hellofx;
 
+
+
 import java.io.File;
 
 import javafx.animation.PauseTransition;
@@ -23,12 +25,19 @@ public class QuitProgram {
     private double scenewidth;
     private double sceneheight;
     private TextField textfield; 
-
+    private Group videoroot;
+    private Scene loganvideoscene; 
 
 public QuitProgram(double scenewidth, double sceneheight, Stage primarystage) {
     this.scenewidth = scenewidth;
     this.sceneheight = sceneheight;
     intialize();
+}
+
+public QuitProgram(Double scenewidth, Double sceneheight) {
+this.scenewidth = scenewidth;
+this.sceneheight = sceneheight; 
+initialize2();
 }
 
 
@@ -38,6 +47,35 @@ public void intialize() {
     setquitscene("C:/Jonathan/JavaFXProject/logandance2.mp4"); 
     
 }
+public void initialize2() {
+    videoroot = new Group();
+    loganvideoscene = new Scene(videoroot, scenewidth, sceneheight); 
+    setvideoscene("C:/Jonathan/JavaFXProject/logandance2.mp4"); 
+}
+
+public void setvideoscene(String videopath) {
+    File video = new File(videopath); 
+    Media media = new Media(video.toURI().toString()); 
+    
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
+    mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+
+    MediaView loganVideo = new MediaView(mediaPlayer); 
+    loganVideo.setPreserveRatio(false); 
+    loganVideo.setFitHeight(sceneheight);
+    loganVideo.setFitWidth(scenewidth);
+     PauseTransition pause = new PauseTransition(Duration.seconds(10));
+        pause.setOnFinished(event -> {
+            javafx.application.Platform.exit(); 
+        });
+        pause.play(); 
+
+    videoroot.getChildren().add(loganVideo); 
+}
+
+
+
+
 
 public void setquitscene(String loganvideo) {
     Font introlabelfont = new Font("Arial", 20);
@@ -74,6 +112,10 @@ public void setquitscene(String loganvideo) {
 
 public Scene getscene3() {
     return scene3; 
+}
+
+public Scene getvideoscene() {
+    return loganvideoscene; 
 }
 
 EventHandler<ActionEvent> textfieldenter = new EventHandler<ActionEvent>() {

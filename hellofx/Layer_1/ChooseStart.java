@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -18,11 +19,15 @@ public class ChooseStart {
     private Group root2;
     private Scene scene2;
     private Stage primaryStage;  
+    private Button Start;
+    private Label Titlelabel; 
 
-    public ChooseStart(Double sceneheight, Double scenewidth, Stage primaryStage) {
+    public ChooseStart(Double sceneheight, Double scenewidth, Stage primaryStage, Button Start, Label Titlelabel) {
         this.sceneheight = sceneheight;
         this.scenewidth = scenewidth; 
         this.primaryStage = primaryStage; 
+        this.Start = Start;
+        this.Titlelabel = Titlelabel; 
         initialize(); 
     }
     private void initialize() {
@@ -97,7 +102,7 @@ scaletransition.play();
     };
     EventHandler<ActionEvent> choosehouse = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
-            ChooseHouse clickHouse = new ChooseHouse(scenewidth, sceneheight, primaryStage);
+            ChooseHouse clickHouse = new ChooseHouse(scenewidth, sceneheight, Titlelabel, primaryStage, Start);
             primaryStage.setScene(clickHouse.getscenehouse()); 
         }
     };

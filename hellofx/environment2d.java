@@ -95,7 +95,7 @@ public class environment2d {
     };
     EventHandler<ActionEvent> choosestart = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
-        ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, primarystage);
+        ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, primarystage, start, title); 
         primarystage.setScene(scene2.getscene()); 
 }
 }; 
