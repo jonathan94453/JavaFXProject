@@ -2,7 +2,6 @@ package hellofx.Layer_1;
 import java.util.Random;
 
 import hellofx.QuitProgram;
-import hellofx.environment2d;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
@@ -125,7 +124,7 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {
 
         else {
             Question.setFont(Questionfont);
-            Question.setText("Sorry, you got distracted and played \nfornite with Jacob for 5 hours");
+            Question.setText("Sorry, you got distracted and played \nfornite for 5 hours");
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.setOnFinished(event -> {
             QuitProgram quitfully = new QuitProgram(scenewidth, sceneheight); 
