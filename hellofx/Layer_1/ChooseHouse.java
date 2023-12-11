@@ -154,8 +154,8 @@ else if(user_input.equals("Play Fortnite")) {
                 Question.setText("You lost and got emoted on by a 9 year old");
                 PauseTransition pause2 = new PauseTransition(Duration.seconds(3)); 
                 pause2.setOnFinished(event -> {
-                        Fortnite newfortnite2 = new Fortnite(scenewidth, sceneheight);
-                        primaryStage.setScene(newfortnite2.getscene()); 
+                        QuitProgram lost = new QuitProgram(scenewidth, sceneheight);
+                        primaryStage.setScene(lost.getscene3());
                 });
                 pause2.play();   
                
