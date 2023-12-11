@@ -26,8 +26,7 @@ public class QuitProgram {
     private double sceneheight;
     private TextField textfield; 
     private Group videoroot;
-    private Scene loganvideoscene; 
-    private MediaPlayer mediaPlayer; 
+    private Scene Scene2;  
 
 // Parametrized Constructor 
 public QuitProgram(double scenewidth, double sceneheight, Stage primarystage) {
@@ -52,27 +51,22 @@ public void intialize() {
 // Second initialize that creates a new scene that only plays the logan video 
 public void initialize2() {
     videoroot = new Group();
-    loganvideoscene = new Scene(videoroot, scenewidth, sceneheight); 
-    setvideoscene("C:/Jonathan/JavaFXProject/logandance2.mp4"); 
+    Scene2 = new Scene(videoroot, scenewidth, sceneheight); 
+    setvideoscene("file:/C:/Jonathan/JavaFXProject/logandance2.mp4"); 
 }
 
 public void setvideoscene(String videopath) {
-    File video = new File(videopath); 
-    Media media = new Media(video.toURI().toString()); 
-    mediaPlayer = new MediaPlayer(media);
+    String videopath2 = videopath; 
+    Media media = new Media(videopath2); 
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
+    MediaView loganvideo = new MediaView(mediaPlayer); 
+    mediaPlayer.setAutoPlay(true);
+    loganvideo.setPreserveRatio(false);
+    mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+    loganvideo.setFitHeight(sceneheight);  
+    loganvideo.setFitWidth(scenewidth);                                                 
 
-    MediaView loganVids = new MediaView(mediaPlayer); 
-   
-
-    loganVids.setFitHeight(sceneheight);
-    loganVids.setFitWidth(scenewidth); 
-     PauseTransition pause = new PauseTransition(Duration.seconds(10));
-        pause.setOnFinished(event -> {
-            javafx.application.Platform.exit(); 
-        });
-        pause.play(); 
-
-    videoroot.getChildren().add(loganVids); 
+    videoroot.getChildren().add(loganvideo); 
 }
 
 
@@ -85,12 +79,12 @@ public void setquitscene(String loganvideo) {
     introlabel.setFont(introlabelfont);
     introlabel.setTextFill(Color.BLACK);
     introlabel.setLayoutX(250);
-    introlabel.setLayoutY(0);
+    introlabel.setLayoutY(0);  
 
-    File video = new File(loganvideo); 
-    Media media = new Media(video.toURI().toString()); 
-    
+    String videopath = "file:/C:/Jonathan/JavaFXProject/logandance2.mp4"; 
+    Media media = new Media(videopath); 
     MediaPlayer mediaPlayer = new MediaPlayer(media);
+
     mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
 
     MediaView loganVideo = new MediaView(mediaPlayer); 
@@ -117,7 +111,7 @@ public Scene getscene3() {
 }
 
 public Scene getvideoscene() {
-    return loganvideoscene; 
+    return Scene2; 
 }
 
 EventHandler<ActionEvent> textfieldenter = new EventHandler<ActionEvent>() {

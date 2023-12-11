@@ -54,13 +54,13 @@ private void sethousescene(String image) {
 Question = new Label();
 Question.setText("What would you like to do? \nStudy or Play Fortnite?");
 Questionfont = new Font("Arial", 15); 
-Question.setTextFill(Color.BLACK); 
-Question.setLayoutX(15);
+Question.setTextFill(Color.WHITE); 
+Question.setLayoutX(325);
 Question.setLayoutY(200);
 Question.setFont(Questionfont);
 // Figured out you can use TextField to collect user_input with javafx; 
 answer = new TextField();
-answer.setLayoutX(10); 
+answer.setLayoutX(325); 
 answer.setLayoutY(300);
 answer.setOnAction(answerentered);
 
@@ -73,14 +73,14 @@ viewimage.setFitHeight(sceneheight);
 viewimage.setFitWidth(scenewidth);
 // Hard Task to find the pacman font from a TTF file from the internet, 
 // But this loads it from the internet 
-Font welcomesLabelFont = new Font("Arial", 20); 
-String welcome = "Welcome to Logan Westriches House";
+Font welcomesLabelFont = new Font("Times New Roman", 30); 
+String welcome = "Welcome to Logan Westrich's House";
 
 // Hard to figure out how to animate the text, but this is my 
 // Best representation of it; 
 Label welcomesLabel = new Label(""); 
-welcomesLabel.setTextFill(Color.BLACK); 
-welcomesLabel.setLayoutX(100);
+welcomesLabel.setTextFill(Color.WHITE); 
+welcomesLabel.setLayoutX(220);
 welcomesLabel.setFont(welcomesLabelFont); 
 
 Timeline animation = new Timeline();
@@ -133,7 +133,23 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
                 primaryStage.setScene(scene2.getscene()); 
         });
         pause.play();   
-        } 
+        }
+        else {
+            Question.setText("You got distracted"); 
+            PauseTransition pause3 = new PauseTransition(Duration.seconds(2));
+            PauseTransition pause4 = new PauseTransition(Duration.seconds(4));
+            pause4.setOnFinished(event -> {
+                    ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, Titlelabel); 
+                    primaryStage.setScene(scene6.getscene());  
+            }); 
+            pause3.setOnFinished(event -> {
+                QuitProgram program1 = new QuitProgram(sceneheight, scenewidth); 
+                primaryStage.setScene(program1.getvideoscene());  
+                pause4.play(); 
+        });
+        pause3.play();  
+
+        }
     }
 else if(user_input.equals("Play Fortnite")) {
             Random random2 = new Random();
@@ -154,24 +170,15 @@ else if(user_input.equals("Play Fortnite")) {
                 Question.setText("You lost and got emoted on by a 9 year old");
                 PauseTransition pause2 = new PauseTransition(Duration.seconds(3)); 
                 pause2.setOnFinished(event -> {
-                        QuitProgram lost = new QuitProgram(scenewidth, sceneheight);
-                        primaryStage.setScene(lost.getscene3());
+                        Fortnite newfortnite = new Fortnite(scenewidth, sceneheight);
+                        primaryStage.setScene(newfortnite.getscene()); 
                 });
                 pause2.play();   
                
             }
         }
 
-else {
-            Question.setFont(Questionfont);
-            Question.setText("Sorry, you got distracted and played \nfornite for 5 hours");
-            PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(event -> {
-            QuitProgram quitfully = new QuitProgram(scenewidth, sceneheight); 
-            primaryStage.setScene (quitfully.getvideoscene());
-        });
-        pause.play(); 
-        }
+
     
 
 
