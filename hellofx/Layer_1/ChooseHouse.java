@@ -1,6 +1,6 @@
 package hellofx.Layer_1;
 import java.util.Random;
-
+// Used Imports 
 import hellofx.QuitProgram;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -21,6 +21,7 @@ import javafx.util.Duration;
 
 
 public class ChooseHouse {
+// Instance Variables- 
     private double scenewidth; 
     private double sceneheight;
     private Stage primaryStage;
@@ -31,6 +32,7 @@ public class ChooseHouse {
     private Label Titlelabel; 
     private Button Start; 
     private Font Questionfont; 
+// Paramterized Constructor, datapassing into the object for the scene construction 
 public ChooseHouse(double scenewidth, double sceneheight, Label Titlelabel, Stage primaryStage, Button Start) {
     this.scenewidth = scenewidth; 
     this.sceneheight = sceneheight; 
@@ -39,36 +41,41 @@ public ChooseHouse(double scenewidth, double sceneheight, Label Titlelabel, Stag
     this.Start = Start; 
     initialize();
 }
-
+// intialize class for the scene and group of nodes objects 
 private void initialize() {
         root4 = new Group(); 
         housescene = new Scene(root4, scenewidth, sceneheight); 
         sethousescene("/Scene2.JPG"); 
 }
-
+// Scene Architecture for when the house is clicked 
 private void sethousescene(String image) {
+// Question Variable to prompt the user input 
 Question = new Label();
 Question.setText("What would you like to do? \nStudy or Play Fortnite?");
 Questionfont = new Font("Arial", 15); 
 Question.setLayoutX(15);
 Question.setLayoutY(200);
 Question.setFont(Questionfont);
-
+// Figured out you can use TextField to collect user_input with javafx; 
 answer = new TextField();
 answer.setLayoutX(10); 
 answer.setLayoutY(300);
 answer.setOnAction(answerentered);
 
 
-
+// Creates a new imageview object for the Background picture of the hosue; 
 Image picture = new Image(image); 
 ImageView viewimage = new ImageView(picture);
 
 viewimage.setFitHeight(sceneheight);
 viewimage.setFitWidth(scenewidth);
+// Hard Task to find the pacman font from a TTF file from the internet, 
+// But this loads it from the internet 
 Font welcomesLabelFont = Font.loadFont(getClass().getResourceAsStream("/PAC-FONT.TTF"), 20); 
-String welcome = "Welcome to Logan Westriches House"; 
+String welcome = "Welcome to Logan Westriches House";
 
+// Hard to figure out how to animate the text, but this is my 
+// Best representation of it; 
 Label welcomesLabel = new Label(""); 
 welcomesLabel.setLayoutX(100);
 welcomesLabel.setFont(welcomesLabelFont); 
@@ -95,16 +102,19 @@ animation.play();
 
 
 
-
+// Add nodes to the group; One thing I learned 
+// They have to be in order if you want them each to show up in the right spots 
+// Have them in order of how 
 root4.getChildren().add(viewimage); 
 root4.getChildren().add(welcomesLabel); 
 root4.getChildren().add(Question);
-root4.getChildren().add(answer); 
+root4.getChildren().add(answer);  
 }
-
+// Return House Scene 
 public Scene getscenehouse() {
     return housescene; 
 }
+// Event Handler when something is entered into texfield 
 EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
     String user_input = answer.getText(); 

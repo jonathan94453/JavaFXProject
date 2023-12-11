@@ -1,7 +1,7 @@
 package hellofx;
 import javafx.event.EventHandler;
 
-
+//All are used imports 
 import javafx.stage.Stage;
 import hellofx.Layer_1.ChooseStart;
 import javafx.event.ActionEvent;
@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
 public class environment2d {
+// Instance variables
     private Group root; 
     private Scene scene;
     private double scenewidth;
@@ -21,20 +22,21 @@ public class environment2d {
     private Label title;
     private Button start;
     private Stage primarystage; 
-
+// Paramaterized Constructor to assign values to instance variables 
     public environment2d(double scenewidth, double sceneheight, Label title, Button start, Stage primarystage) {
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight;
         this.title = title;
         this.start = start;
         this.primarystage = primarystage; 
+// initialize method to set scene and node variables
         intialize(); 
     }
 
     private void intialize() {
         root = new Group();
         scene = new Scene(root, scenewidth, sceneheight); 
-        
+  // Main scene intialize with path of village picture passed to the method       
         setstart("/village.jpg"); 
     }
     
@@ -48,7 +50,7 @@ public class environment2d {
             Button quit = new Button("Quit"); 
             Button ShowMap = new Button("Show Map"); 
 
-// When quit is clicked- call the choosequit event handler. 
+
 
 //Set Layout of everything
             quit.setOnAction(choosequit);
@@ -82,6 +84,7 @@ public class environment2d {
             root.getChildren().add(quit); 
             root.getChildren().add(ShowMap); 
     }
+// Accessor Method to return the scene 
     public Scene getScene() {
         return scene; 
     }
@@ -94,25 +97,31 @@ public class environment2d {
                 primarystage.setScene(quitgame.getscene3()); 
             }
     };
+// Any type of quit button is clicked 
     EventHandler<ActionEvent> quitapplication = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 javafx.application.Platform.exit(); 
             }
     };
+// Start the game button is clicked 
     EventHandler<ActionEvent> choosestart = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
         ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, primarystage, start, title); 
         primarystage.setScene(scene2.getscene()); 
 }
 };
+//Showmap button is clicked 
     EventHandler<ActionEvent> Showthemap = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
+// Small Scene Architecture when showmap is clicked 
             Group maproot = new Group();
             Scene map = new Scene(maproot, scenewidth, sceneheight);
             Image backgroundimage = new Image(getClass().getResourceAsStream("/village.jpg"));
             ImageView backgroundview = new ImageView(backgroundimage);
             backgroundview.setFitHeight(sceneheight);
             backgroundview.setFitWidth(scenewidth);
+// Quit Button quits out of the application 
+// I make quit buttons for any scene that still needs more extensive architecture 
             Button quit = new Button("Quit"); 
             quit.setLayoutX(350);
             quit.setLayoutY(100);

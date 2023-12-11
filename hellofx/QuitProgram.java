@@ -1,9 +1,8 @@
 package hellofx;
 
 
-
+// Every single import for this project; 
 import java.io.File;
-
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class QuitProgram {
+// Instance Variables- 
     private Group root3;
     private Scene scene3; 
     private double scenewidth;
@@ -27,13 +27,15 @@ public class QuitProgram {
     private TextField textfield; 
     private Group videoroot;
     private Scene loganvideoscene; 
+    private MediaPlayer mediaPlayer; 
 
+// Parametrized Constructor 
 public QuitProgram(double scenewidth, double sceneheight, Stage primarystage) {
     this.scenewidth = scenewidth;
     this.sceneheight = sceneheight;
     intialize();
 }
-
+// Different Constructor that provides soley dimensions
 public QuitProgram(Double scenewidth, Double sceneheight) {
 this.scenewidth = scenewidth;
 this.sceneheight = sceneheight; 
@@ -47,6 +49,7 @@ public void intialize() {
     setquitscene("C:/Jonathan/JavaFXProject/logandance2.mp4"); 
     
 }
+// Second initialize that creates a new scene that only plays the logan video 
 public void initialize2() {
     videoroot = new Group();
     loganvideoscene = new Scene(videoroot, scenewidth, sceneheight); 
@@ -56,21 +59,20 @@ public void initialize2() {
 public void setvideoscene(String videopath) {
     File video = new File(videopath); 
     Media media = new Media(video.toURI().toString()); 
-    
-    MediaPlayer mediaPlayer = new MediaPlayer(media);
-    mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+    mediaPlayer = new MediaPlayer(media);
 
-    MediaView loganVideo = new MediaView(mediaPlayer); 
-    loganVideo.setPreserveRatio(false); 
-    loganVideo.setFitHeight(sceneheight);
-    loganVideo.setFitWidth(scenewidth);
+    MediaView loganVids = new MediaView(mediaPlayer); 
+   
+
+    loganVids.setFitHeight(sceneheight);
+    loganVids.setFitWidth(scenewidth); 
      PauseTransition pause = new PauseTransition(Duration.seconds(10));
         pause.setOnFinished(event -> {
             javafx.application.Platform.exit(); 
         });
         pause.play(); 
 
-    videoroot.getChildren().add(loganVideo); 
+    videoroot.getChildren().add(loganVids); 
 }
 
 
