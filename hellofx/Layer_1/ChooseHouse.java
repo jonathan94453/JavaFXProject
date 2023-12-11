@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration; 
@@ -53,6 +54,7 @@ private void sethousescene(String image) {
 Question = new Label();
 Question.setText("What would you like to do? \nStudy or Play Fortnite?");
 Questionfont = new Font("Arial", 15); 
+Question.setTextFill(Color.BLACK); 
 Question.setLayoutX(15);
 Question.setLayoutY(200);
 Question.setFont(Questionfont);
@@ -71,12 +73,13 @@ viewimage.setFitHeight(sceneheight);
 viewimage.setFitWidth(scenewidth);
 // Hard Task to find the pacman font from a TTF file from the internet, 
 // But this loads it from the internet 
-Font welcomesLabelFont = Font.loadFont(getClass().getResourceAsStream("/PAC-FONT.TTF"), 20); 
+Font welcomesLabelFont = new Font("Arial", 20); 
 String welcome = "Welcome to Logan Westriches House";
 
 // Hard to figure out how to animate the text, but this is my 
 // Best representation of it; 
 Label welcomesLabel = new Label(""); 
+welcomesLabel.setTextFill(Color.BLACK); 
 welcomesLabel.setLayoutX(100);
 welcomesLabel.setFont(welcomesLabelFont); 
 
@@ -115,7 +118,7 @@ public Scene getscenehouse() {
     return housescene; 
 }
 // Event Handler when something is entered into texfield 
-EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {
+EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
     public void handle(ActionEvent e) {
     String user_input = answer.getText(); 
     if (user_input.equals("Study")) {
@@ -131,8 +134,35 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {
         });
         pause.play();   
         } 
+    }
+else if(user_input.equals("Play Fortnite")) {
+            Random random2 = new Random();
+            int randomint2 = random2.nextInt(10) + 1;
+            if (randomint2 == 5) {
+                Question.setFont(Questionfont);
+                Question.setText("Congrats you got a victory royale"); 
+                PauseTransition pause = new PauseTransition(Duration.seconds(3)); 
+                pause.setOnFinished(event -> {
+                        Fortnite newfortnite = new Fortnite(scenewidth, sceneheight);
+                        primaryStage.setScene(newfortnite.getscene()); 
+                }); 
+                pause.play();   
+                
 
-        else {
+            }
+            else {
+                Question.setText("You lost and got emoted on by a 9 year old");
+                PauseTransition pause2 = new PauseTransition(Duration.seconds(3)); 
+                pause2.setOnFinished(event -> {
+                        Fortnite newfortnite2 = new Fortnite(scenewidth, sceneheight);
+                        primaryStage.setScene(newfortnite2.getscene()); 
+                });
+                pause2.play();   
+               
+            }
+        }
+
+else {
             Question.setFont(Questionfont);
             Question.setText("Sorry, you got distracted and played \nfornite for 5 hours");
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
@@ -142,9 +172,14 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {
         });
         pause.play(); 
         }
+    
+
+
+
+
+
+
     }
-}
-}; 
 
-
-}
+};
+} 

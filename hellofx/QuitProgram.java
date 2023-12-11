@@ -81,7 +81,7 @@ public void setvideoscene(String videopath) {
 
 public void setquitscene(String loganvideo) {
     Font introlabelfont = new Font("Arial", 20);
-    Label introlabel = new Label("Enter the Reason to Quit");
+    Label introlabel = new Label("Enter why you want to Quit");
     introlabel.setFont(introlabelfont);
     introlabel.setTextFill(Color.BLACK);
     introlabel.setLayoutX(250);
