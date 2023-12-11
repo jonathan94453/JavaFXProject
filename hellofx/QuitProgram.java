@@ -2,7 +2,6 @@ package hellofx;
 
 
 // Every single import for this project; 
-import java.io.File;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

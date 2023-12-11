@@ -34,12 +34,12 @@ public class ChooseStart {
     private void initialize() {
             root2 = new Group();
             scene2 = new Scene(root2, scenewidth, sceneheight); 
-            setthescene("/village.jpg", "/House.jpg"); 
+            setthescene("/village.jpg", "/House.jpg", "/Pond.jpg"); 
     }
 
 
 
-    public void setthescene(String environmentimage, String houseimage) {
+    public void setthescene(String environmentimage, String houseimage, String pondimage) {
         Button Quit = new Button("Quit"); 
         Quit.setOnAction(choosequit); 
         Quit.setLayoutX(400);
@@ -86,18 +86,30 @@ scaletransition.play();
 
     });
 
-
-
-
-
+Button lake = new Button(); 
+lake.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
+lake.setLayoutX(10);
+lake.setLayoutY(570);
+lake.setMinWidth(480);
+lake.setMinHeight(180);
+/*
+ * HELLO
+ * First multiline comment 
+ */
+Image image2 = new Image(pondimage);
+ImageView imageview2 = new ImageView(image2); 
+imageview2.setFitHeight(lake.getMinHeight()); 
+imageview2.setFitWidth(lake.getMinWidth());
+lake.setGraphic(imageview2);
 
 
 
 // Add nodes to the group of nodes 
         root2.getChildren().add(backgroundview);  
         root2.getChildren().add(house); 
+        root2.getChildren().add(lake); 
         root2.getChildren().add(Quit); 
-        
+
     }
 // Scene Accessor Method 
     public Scene getscene() {
