@@ -88,9 +88,9 @@ scaletransition.play();
 
 Button lake = new Button(); 
 lake.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
-lake.setLayoutX(10);
-lake.setLayoutY(570);
-lake.setMinWidth(480);
+lake.setLayoutX(-15);
+lake.setLayoutY(550);
+lake.setMinWidth(510);
 lake.setMinHeight(180);
 /*
  * HELLO
