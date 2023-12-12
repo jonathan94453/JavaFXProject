@@ -34,12 +34,13 @@ public class ChooseStart {
     private void initialize() {
             root2 = new Group();
             scene2 = new Scene(root2, scenewidth, sceneheight); 
-            setthescene("/village.jpg", "/House.jpg", "/Pond.jpg"); 
+            setthescene("/village.jpg", "/House.jpg", "/Pond.jpg", "/LHS.jpg", "/gf.jpg"); 
     }
 
 
-
-    public void setthescene(String environmentimage, String houseimage, String pondimage) {
+// Extremely Extensive Method, Constructing each Button in the game for each section
+// Of the Map; 
+    public void setthescene(String environmentimage, String houseimage, String pondimage, String lhshouse, String gfhouse) {
         Button Quit = new Button("Quit"); 
         Quit.setOnAction(choosequit); 
         Quit.setLayoutX(400);
@@ -50,6 +51,10 @@ public class ChooseStart {
 
 // Mouse Hover Code 
 // Program to have the button enlarge itself when hovered on, placement was as close as possible. 
+Button LHS = new Button();
+Button Sunset = new Button();
+Button GFhouse = new Button();
+Button SandT = new Button(); 
 Image image = new Image(houseimage);
 ImageView imageview = new ImageView(image); 
 imageview.setFitHeight(100);
@@ -90,24 +95,100 @@ Button lake = new Button();
 lake.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
 lake.setLayoutX(-15);
 lake.setLayoutY(550);
-lake.setMinWidth(510);
-lake.setMinHeight(180);
-/*
- * HELLO
- * First multiline comment 
- */
+lake.setMinWidth(530);
+lake.setMinHeight(210);
+
+ScaleTransition scaletransition2 = new ScaleTransition(Duration.millis(200), lake);
+// From Size --> To Size; 
+scaletransition2.setFromX(1.0);
+scaletransition2.setFromY(1.0);
+scaletransition2.setToX(1.1);
+scaletransition2.setToY(1.1); 
+
+lake.setOnMouseEntered(event -> {
+        scaletransition2.playFromStart();
+});
+
+lake.setOnMouseExited(event -> {
+scaletransition2.setRate(-1);
+scaletransition2.play(); 
+
+    });
+
+LHS.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
+LHS.setLayoutX(540);
+LHS.setLayoutY(145);
+LHS.setMinWidth(280);
+LHS.setMinHeight(160);
+
+ScaleTransition scaletransition3 = new ScaleTransition(Duration.millis(200), LHS);
+// From Size --> To Size; 
+scaletransition3.setFromX(1.0);
+scaletransition3.setFromY(1.0);
+scaletransition3.setToX(1.1);
+scaletransition3.setToY(1.1); 
+
+LHS.setOnMouseEntered(event -> {
+        scaletransition3.playFromStart();
+});
+
+LHS.setOnMouseExited(event -> {
+scaletransition3.setRate(-1);
+scaletransition3.play(); 
+
+    });
+
+GFhouse.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
+GFhouse.setLayoutX(624);
+GFhouse.setLayoutY(280);
+GFhouse.setMinWidth(170);
+GFhouse.setMinHeight(90);
+
+ScaleTransition scaletransition4 = new ScaleTransition(Duration.millis(200), GFhouse);
+// From Size --> To Size; 
+scaletransition4.setFromX(1.0);
+scaletransition4.setFromY(1.0);
+scaletransition4.setToX(1.1);
+scaletransition4.setToY(1.1); 
+
+GFhouse.setOnMouseEntered(event -> {
+        scaletransition4.playFromStart();
+});
+
+GFhouse.setOnMouseExited(event -> {
+scaletransition4.setRate(-1);
+scaletransition4.play(); 
+
+    });
+
+
+
+// Image, Imageviews, setGraphics
 Image image2 = new Image(pondimage);
+Image image3 = new Image(lhshouse);
+Image image4 = new Image(gfhouse); 
+
+
 ImageView imageview2 = new ImageView(image2); 
+ImageView imageview3 = new ImageView(image3); 
+ImageView imageview4 = new ImageView(image4); 
+
 imageview2.setFitHeight(lake.getMinHeight()); 
 imageview2.setFitWidth(lake.getMinWidth());
+imageview3.setFitHeight(LHS.getMinHeight());
+imageview3.setFitWidth(LHS.getMinWidth());
+imageview4.setFitHeight(GFhouse.getMinHeight());
+imageview4.setFitWidth(GFhouse.getMinWidth()); 
 lake.setGraphic(imageview2);
-
-
+LHS.setGraphic(imageview3);
+GFhouse.setGraphic(imageview4); 
 
 // Add nodes to the group of nodes 
         root2.getChildren().add(backgroundview);  
         root2.getChildren().add(house); 
         root2.getChildren().add(lake); 
+        root2.getChildren().add(LHS);
+        root2.getChildren().add(GFhouse); 
         root2.getChildren().add(Quit); 
 
     }
