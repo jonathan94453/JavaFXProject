@@ -9,6 +9,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.MeshView;
+import javafx.scene.shape.TriangleMesh;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -114,23 +116,41 @@ public class environment2d {
     EventHandler<ActionEvent> Showthemap = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
 // Small Scene Architecture when showmap is clicked 
+   TriangleMesh mesh = new TriangleMesh();
+        mesh.getPoints().addAll(
+                0, 0, 0,
+                50, 0, 0,
+                0, 50, 0
+        );
+        mesh.getTexCoords().addAll(0, 0);
+
+        int[] faces = {0, 0, 1, 0, 2, 0};
+        mesh.getFaces().addAll(faces);
+
+        // Create a MeshView and apply the mesh
+        MeshView meshView = new MeshView(mesh);
+        meshView.setTranslateX(100);
+        meshView.setTranslateY(100);
+
             Group maproot = new Group();
+            maproot.getChildren().add(meshView); 
             Scene map = new Scene(maproot, scenewidth, sceneheight);
-            Image backgroundimage = new Image(getClass().getResourceAsStream("/village.jpg"));
-            ImageView backgroundview = new ImageView(backgroundimage);
-            backgroundview.setFitHeight(sceneheight);
-            backgroundview.setFitWidth(scenewidth);
-// Quit Button quits out of the application 
-// I make quit buttons for any scene that still needs more extensive architecture 
-            Button quit = new Button("Quit"); 
-            quit.setLayoutX(350);
-            quit.setLayoutY(100);
-            quit.setMinHeight(20);
-            quit.setMinWidth(100);
-            quit.setOnAction(quitapplication);
-            maproot.getChildren().add(backgroundview); 
-            maproot.getChildren().add(quit); 
-            primarystage.setScene(map);       
+            primarystage.setScene(map); 
+//             Image backgroundimage = new Image(getClass().getResourceAsStream("/village.jpg"));
+//             ImageView backgroundview = new ImageView(backgroundimage);
+//             backgroundview.setFitHeight(sceneheight);
+//             backgroundview.setFitWidth(scenewidth);
+// // Quit Button quits out of the application 
+// // I make quit buttons for any scene that still needs more extensive architecture 
+//             Button quit = new Button("Quit"); 
+//             quit.setLayoutX(350);
+//             quit.setLayoutY(100);
+//             quit.setMinHeight(20);
+//             quit.setMinWidth(100);
+//             quit.setOnAction(quitapplication);
+//             maproot.getChildren().add(backgroundview); 
+//             maproot.getChildren().add(quit); 
+//             primarystage.setScene(map);       
 
         }
     }; 
