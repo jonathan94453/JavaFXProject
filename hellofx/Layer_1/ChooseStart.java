@@ -3,6 +3,7 @@ package hellofx.Layer_1;
 
 import hellofx.Layer_2.ChooseHouse;
 import hellofx.Layer_2.ChoosePond;
+import hellofx.Layer_2.ChooseSunset;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import javafx.scene.Scene; 
 import javafx.stage.Stage;
@@ -196,6 +198,10 @@ Sunset.setLayoutX(210);
 Sunset.setLayoutY(10);
 Sunset.setMinWidth(180);
 Sunset.setMinHeight(120);
+Sunset.setOnAction(choosesunset);
+
+
+
 
 ScaleTransition scaletransition6 = new ScaleTransition(Duration.millis(200), Sunset);
 // From Size --> To Size; 
@@ -254,6 +260,15 @@ Sunset.setGraphic(imageview6);
         root2.getChildren().add(Sunset); 
         root2.getChildren().add(Quit); 
 
+
+
+// Measure Tool
+scene2.setOnMouseMoved((MouseEvent event) -> {
+    double x = event.getX();
+    double y = event.getY();
+    System.out.print( x + " " + y);
+});
+
     }
 // Scene Accessor Method 
     public Scene getscene() {
@@ -275,8 +290,15 @@ Sunset.setGraphic(imageview6);
 // Pond button Action
 EventHandler <ActionEvent> choosepond = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-        ChoosePond pond = new ChoosePond(scenewidth, sceneheight);
+        ChoosePond pond = new ChoosePond();
         primaryStage.setScene(pond.getscene());
+    }
+};
+
+EventHandler<ActionEvent> choosesunset = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+            ChooseSunset sunset = new ChooseSunset();
+            primaryStage.setScene(sunset.getscene());
     }
 }; 
     
