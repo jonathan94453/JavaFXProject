@@ -2,6 +2,7 @@
 package hellofx.Layer_1;
 
 import hellofx.Layer_2.ChooseHouse;
+import hellofx.Layer_2.ChoosePond;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -99,6 +100,7 @@ lake.setLayoutX(-15);
 lake.setLayoutY(550);
 lake.setMinWidth(530);
 lake.setMinHeight(210);
+lake.setOnAction(choosepond);
 
 ScaleTransition scaletransition2 = new ScaleTransition(Duration.millis(200), lake);
 // From Size --> To Size; 
@@ -270,5 +272,12 @@ Sunset.setGraphic(imageview6);
             primaryStage.setScene(clickHouse.getscenehouse()); 
         }
     };
+// Pond button Action
+EventHandler <ActionEvent> choosepond = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+        ChoosePond pond = new ChoosePond(scenewidth, sceneheight);
+        primaryStage.setScene(pond.getscene());
+    }
+}; 
     
 }
