@@ -20,7 +20,7 @@ public class Main extends Application {
 // Title label class 
             Label Titlelabel = new Label("Welcome to Westrichia"); 
             Button Start = new Button(); 
-            environment2d background = new environment2d(scenewidth, sceneheight, Titlelabel, Start, primaryStage); 
+            StartScreen background = new StartScreen(scenewidth, sceneheight, Titlelabel, Start, primaryStage); 
             setcurrentscene(background.getScene()); 
 // Stage configuration (Icon is a house from the main village) 
             primaryStage.getIcons().add(new Image("/Scene2.jpg")); 

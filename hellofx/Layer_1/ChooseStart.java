@@ -1,6 +1,7 @@
 // Choose Start the Game on the main screen 
 package hellofx.Layer_1;
 
+import hellofx.Layer_2.ChooseHouse;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,13 +35,13 @@ public class ChooseStart {
     private void initialize() {
             root2 = new Group();
             scene2 = new Scene(root2, scenewidth, sceneheight); 
-            setthescene("/village.jpg", "/House.jpg", "/Pond.jpg", "/LHS.jpg", "/gf.jpg"); 
+            setthescene("/village.jpg", "/House.jpg", "/Pond.jpg", "/LHS.jpg", "/gf.jpg", "/SANDT.jpg", "/Sunset.jpg"); 
     }
 
 
 // Extremely Extensive Method, Constructing each Button in the game for each section
 // Of the Map; 
-    public void setthescene(String environmentimage, String houseimage, String pondimage, String lhshouse, String gfhouse) {
+    public void setthescene(String environmentimage, String houseimage, String pondimage, String lhshouse, String gfhouse, String Univeristy, String Sunsetend) {
         Button Quit = new Button("Quit"); 
         Quit.setOnAction(choosequit); 
         Quit.setLayoutX(400);
@@ -51,10 +52,11 @@ public class ChooseStart {
 
 // Mouse Hover Code 
 // Program to have the button enlarge itself when hovered on, placement was as close as possible. 
-Button LHS = new Button();
+Button SandT = new Button();
 Button Sunset = new Button();
 Button GFhouse = new Button();
-Button SandT = new Button(); 
+Button LHS = new Button(); 
+Button lake = new Button(); 
 Image image = new Image(houseimage);
 ImageView imageview = new ImageView(image); 
 imageview.setFitHeight(100);
@@ -91,7 +93,7 @@ scaletransition.play();
 
     });
 
-Button lake = new Button(); 
+
 lake.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
 lake.setLayoutX(-15);
 lake.setLayoutY(550);
@@ -140,9 +142,9 @@ scaletransition3.play();
 
 GFhouse.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
 GFhouse.setLayoutX(624);
-GFhouse.setLayoutY(280);
-GFhouse.setMinWidth(170);
-GFhouse.setMinHeight(90);
+GFhouse.setLayoutY(310);
+GFhouse.setMinWidth(180);
+GFhouse.setMinHeight(120);
 
 ScaleTransition scaletransition4 = new ScaleTransition(Duration.millis(200), GFhouse);
 // From Size --> To Size; 
@@ -162,16 +164,66 @@ scaletransition4.play();
     });
 
 
+SandT.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
+SandT.setLayoutX(-15);
+SandT.setLayoutY(200);
+SandT.setMinWidth(300);
+SandT.setMinHeight(165);
+
+
+ScaleTransition scaletransition5 = new ScaleTransition(Duration.millis(200), SandT);
+// From Size --> To Size; 
+scaletransition5.setFromX(1.0);
+scaletransition5.setFromY(1.0);
+scaletransition5.setToX(1.1);
+scaletransition5.setToY(1.1); 
+
+SandT.setOnMouseEntered(event -> {
+        scaletransition5.playFromStart();
+});
+
+SandT.setOnMouseExited(event -> {
+scaletransition5.setRate(-1);
+scaletransition5.play(); 
+
+    });
+
+
+Sunset.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
+Sunset.setLayoutX(210);
+Sunset.setLayoutY(10);
+Sunset.setMinWidth(180);
+Sunset.setMinHeight(120);
+
+ScaleTransition scaletransition6 = new ScaleTransition(Duration.millis(200), Sunset);
+// From Size --> To Size; 
+scaletransition6.setFromX(1.0);
+scaletransition6.setFromY(1.0);
+scaletransition6.setToX(1.1);
+scaletransition6.setToY(1.1); 
+
+Sunset.setOnMouseEntered(event -> {
+        scaletransition6.playFromStart();
+});
+
+Sunset.setOnMouseExited(event -> {
+scaletransition6.setRate(-1);
+scaletransition6.play(); 
+
+    });
 
 // Image, Imageviews, setGraphics
 Image image2 = new Image(pondimage);
 Image image3 = new Image(lhshouse);
 Image image4 = new Image(gfhouse); 
-
+Image image5 = new Image(Univeristy); 
+Image image6 = new Image(Sunsetend); 
 
 ImageView imageview2 = new ImageView(image2); 
 ImageView imageview3 = new ImageView(image3); 
 ImageView imageview4 = new ImageView(image4); 
+ImageView imageview5 = new ImageView(image5); 
+ImageView imageview6 = new ImageView(image6); 
 
 imageview2.setFitHeight(lake.getMinHeight()); 
 imageview2.setFitWidth(lake.getMinWidth());
@@ -179,9 +231,16 @@ imageview3.setFitHeight(LHS.getMinHeight());
 imageview3.setFitWidth(LHS.getMinWidth());
 imageview4.setFitHeight(GFhouse.getMinHeight());
 imageview4.setFitWidth(GFhouse.getMinWidth()); 
+imageview5.setFitHeight(SandT.getMinHeight());
+imageview5.setFitWidth(SandT.getMinWidth());
+imageview6.setFitHeight(Sunset.getMinHeight());
+imageview6.setFitWidth(Sunset.getMinWidth()); 
+
 lake.setGraphic(imageview2);
 LHS.setGraphic(imageview3);
 GFhouse.setGraphic(imageview4); 
+SandT.setGraphic(imageview5);
+Sunset.setGraphic(imageview6);
 
 // Add nodes to the group of nodes 
         root2.getChildren().add(backgroundview);  
@@ -189,6 +248,8 @@ GFhouse.setGraphic(imageview4);
         root2.getChildren().add(lake); 
         root2.getChildren().add(LHS);
         root2.getChildren().add(GFhouse); 
+        root2.getChildren().add(SandT); 
+        root2.getChildren().add(Sunset); 
         root2.getChildren().add(Quit); 
 
     }
@@ -196,12 +257,13 @@ GFhouse.setGraphic(imageview4);
     public Scene getscene() {
         return scene2; 
     }
-// More Event Handlers for Buttons and Textfields; 
+// Event Handler to Quit 
       EventHandler<ActionEvent> choosequit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 javafx.application.Platform.exit();
             }
     };
+// Event Handler to Choose Logan's House 
     EventHandler<ActionEvent> choosehouse = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
             ChooseHouse clickHouse = new ChooseHouse(scenewidth, sceneheight, Titlelabel, primaryStage, Start);
