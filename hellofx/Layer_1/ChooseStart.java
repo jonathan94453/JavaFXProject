@@ -266,7 +266,7 @@ Sunset.setGraphic(imageview6);
 
     }
 // Scene Accessor Method 
-    public Scene getscene() {
+    public Scene getscene() { 
         return scene2; 
     }
 // Event Handler to Quit 
