@@ -1,6 +1,7 @@
 // Choose Start the Game on the main screen 
 package hellofx.Layer_1;
 
+import hellofx.Layer_2.ChooseGF;
 import hellofx.Layer_2.ChooseHouse;
 import hellofx.Layer_2.ChoosePond;
 import hellofx.Layer_2.ChooseSunset;
@@ -295,6 +296,15 @@ EventHandler<ActionEvent> choosesunset = new EventHandler<ActionEvent>() {
             ChooseSunset sunset = new ChooseSunset();
             primaryStage.setScene(sunset.getscene());
     }
+};
+
+
+EventHandler<ActionEvent> choosegfhouse = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+            ChooseGF gf = new ChooseGF();
+            primaryStage.setScene(gf.getscene());
+    }
 }; 
+
     
 }
