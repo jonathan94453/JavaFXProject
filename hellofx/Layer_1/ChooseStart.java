@@ -3,7 +3,9 @@ package hellofx.Layer_1;
 
 import hellofx.Layer_2.ChooseGF;
 import hellofx.Layer_2.ChooseHouse;
+import hellofx.Layer_2.ChooseLHS;
 import hellofx.Layer_2.ChoosePond;
+import hellofx.Layer_2.ChooseSandT;
 import hellofx.Layer_2.ChooseSunset;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
@@ -127,7 +129,7 @@ LHS.setLayoutX(540);
 LHS.setLayoutY(145);
 LHS.setMinWidth(280);
 LHS.setMinHeight(160);
-
+LHS.setOnAction(chooselhs);
 ScaleTransition scaletransition3 = new ScaleTransition(Duration.millis(200), LHS);
 // From Size --> To Size; 
 scaletransition3.setFromX(1.0);
@@ -150,6 +152,7 @@ GFhouse.setLayoutX(624);
 GFhouse.setLayoutY(310);
 GFhouse.setMinWidth(180);
 GFhouse.setMinHeight(120);
+GFhouse.setOnAction(choosegfhouse); 
 
 ScaleTransition scaletransition4 = new ScaleTransition(Duration.millis(200), GFhouse);
 // From Size --> To Size; 
@@ -168,13 +171,13 @@ scaletransition4.play();
 
     });
 
-
+// Button for the College 
 SandT.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
 SandT.setLayoutX(-15);
 SandT.setLayoutY(200);
 SandT.setMinWidth(300);
 SandT.setMinHeight(165);
-
+SandT.setOnAction(choosesandt);
 
 ScaleTransition scaletransition5 = new ScaleTransition(Duration.millis(200), SandT);
 // From Size --> To Size; 
@@ -193,7 +196,7 @@ scaletransition5.play();
 
     });
 
-
+// Sunset Button 
 Sunset.setStyle("-fx-background-color: transparent; -fx-border-width: 0;");
 Sunset.setLayoutX(210);
 Sunset.setLayoutY(10);
@@ -266,11 +269,24 @@ Sunset.setGraphic(imageview6);
 
 
     }
+
+
+
 // Scene Accessor Method 
     public Scene getscene() { 
         return scene2; 
     }
-// Event Handler to Quit 
+
+
+
+
+
+
+
+
+
+
+// EVENT HANDLERS FOR EACH BUTTON 
       EventHandler<ActionEvent> choosequit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 javafx.application.Platform.exit();
@@ -303,6 +319,20 @@ EventHandler<ActionEvent> choosegfhouse = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
             ChooseGF gf = new ChooseGF();
             primaryStage.setScene(gf.getscene());
+    }
+};
+
+EventHandler<ActionEvent> choosesandt = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+            ChooseSandT college = new ChooseSandT();
+            primaryStage.setScene(college.getscene());
+    }
+}; 
+
+EventHandler<ActionEvent> chooselhs = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+            ChooseLHS LHS = new ChooseLHS();
+            primaryStage.setScene(LHS.getscene());
     }
 }; 
 
