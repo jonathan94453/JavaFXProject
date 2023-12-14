@@ -12,15 +12,15 @@ public class ChooseSunset {
 
     public ChooseSunset() {
         sunroot = new Group();
-        sunscene = new Scene(sunroot, 350, 276);
+        sunscene = new Scene(sunroot, 800, 800);
         setscene("/Sunset.jpg"); 
     }
 private void setscene(String sunsetimage) {
     Image image = new Image(sunsetimage); 
     ImageView sunsetview = new ImageView(image); 
 
-
-
+sunsetview.setFitWidth(sunscene.getWidth());
+sunsetview.setFitHeight(sunscene.getHeight());
 
 
 

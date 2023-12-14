@@ -302,7 +302,7 @@ Sunset.setGraphic(imageview6);
 // Pond button Action
 EventHandler <ActionEvent> choosepond = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-        ChoosePond pond = new ChoosePond();
+        ChoosePond pond = new ChoosePond(sceneheight, scenewidth, Titlelabel, Start, primaryStage);
         primaryStage.setScene(pond.getscene());
     }
 };
