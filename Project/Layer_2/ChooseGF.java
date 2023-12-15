@@ -17,7 +17,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
 public class ChooseGF {
     private Group gfroot;
     private Scene gfscene; 
@@ -109,8 +108,8 @@ else if(user_input.equals("no")) {
     PauseTransition pause80 = new PauseTransition(Duration.seconds(2));
     pause80.setOnFinished(event -> {
             
-            QuitProgram quit10 = new QuitProgram(scenewidth, sceneheight, primaryStage);
-            primaryStage.setScene(quit10.getscene3()); 
+            QuitProgram quit10 = new QuitProgram(scenewidth, sceneheight, primaryStage, Start, title); 
+            primaryStage.setScene(quit10.getscene94()); 
     }); 
     pause80.play();
 }

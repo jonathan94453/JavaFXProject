@@ -1,12 +1,14 @@
 package Project;
 
 
+import Project.Layer_1.ChooseStart;
 // Every single import for this project; 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
@@ -26,11 +28,16 @@ public class QuitProgram {
     private TextField textfield; 
     private Group videoroot;
     private Scene Scene2;  
-
+    private Group root94;
+    private Scene scene94; 
+    private Stage primaryStage;
+    private Button Start;
+    private Label titlelabel; 
 // Parametrized Constructor 
 public QuitProgram(double scenewidth, double sceneheight, Stage primarystage) {
     this.scenewidth = scenewidth;
     this.sceneheight = sceneheight;
+    this.primaryStage = primarystage; 
     intialize();
 }
 // Different Constructor that provides soley dimensions
@@ -40,7 +47,14 @@ this.sceneheight = sceneheight;
 initialize2();
 }
 
-
+public QuitProgram(Double scenewidth, Double sceneheight, Stage primaryStage, Button Start, Label titlelabel) {
+    this.scenewidth = scenewidth;
+    this.sceneheight = sceneheight;
+    this.primaryStage = primaryStage;
+    this.Start = Start;
+    this.titlelabel = titlelabel;
+    initialize3(); 
+}
 
 public void intialize() {
     root3 = new Group();
@@ -54,6 +68,35 @@ public void initialize2() {
     Scene2 = new Scene(videoroot, scenewidth, sceneheight); 
     setvideoscene("file:/C:/Jonathan/JavaFXProject/logandance2.mp4"); 
 }
+public void initialize3() {
+    root94 = new Group();
+    scene94 = new Scene(root94, scenewidth, sceneheight); 
+    setthequitscene("file:/C:/Jonathan/JavaFXProject/logandance2.mp4");
+}
+private void setthequitscene(String videopath) {
+    String videopath2 = videopath; 
+    Media media = new Media(videopath2); 
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
+    MediaView loganvideo2 = new MediaView(mediaPlayer); 
+   
+    loganvideo2.setPreserveRatio(false);
+    
+    loganvideo2.setFitHeight(sceneheight);  
+    loganvideo2.setFitWidth(scenewidth);     
+    PauseTransition pause94 = new PauseTransition(Duration.seconds(3));
+    pause94.setOnFinished(event -> {
+            ChooseStart start = new ChooseStart(scenewidth, sceneheight, primaryStage, Start, titlelabel); 
+            primaryStage.setScene(start.getscene()); 
+    });
+    
+    root94.getChildren().add(loganvideo2); 
+    pause94.play(); 
+}
+
+public Scene getscene94() {
+    return scene94; 
+}
+
 
 public void setvideoscene(String videopath) {
     String videopath2 = videopath; 
