@@ -1,9 +1,9 @@
-package hellofx;
+package Project;
 import javafx.event.EventHandler;
 
 //All are used imports 
 import javafx.stage.Stage;
-import hellofx.Layer_1.ChooseStart;
+import Project.Layer_1.ChooseStart;
 import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;

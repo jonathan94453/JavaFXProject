@@ -1,11 +1,8 @@
-package hellofx.Layer_2;
+package Project.Layer_2;
 
-import hellofx.QuitProgram;
-import hellofx.Layer_1.ChooseStart;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
+import Project.QuitProgram;
+import Project.Layer_1.ChooseStart;
 import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;

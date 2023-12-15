@@ -1,4 +1,4 @@
-package hellofx;
+package Project;
 
 
 // Every single import for this project; 
@@ -26,8 +26,7 @@ public class QuitProgram {
     private TextField textfield; 
     private Group videoroot;
     private Scene Scene2;  
-    private Scene scene4;
-    private Group root4; 
+
 // Parametrized Constructor 
 public QuitProgram(double scenewidth, double sceneheight, Stage primarystage) {
     this.scenewidth = scenewidth;

@@ -1,13 +1,13 @@
 // Choose Start the Game on the main screen 
-package hellofx.Layer_1;
+package Project.Layer_1;
 
-import hellofx.StartScreen;
-import hellofx.Layer_2.ChooseGF;
-import hellofx.Layer_2.ChooseHouse;
-import hellofx.Layer_2.ChooseLHS;
-import hellofx.Layer_2.ChoosePond;
-import hellofx.Layer_2.ChooseSandT;
-import hellofx.Layer_2.ChooseSunset;
+import Project.StartScreen;
+import Project.Layer_2.ChooseGF;
+import Project.Layer_2.ChooseHouse;
+import Project.Layer_2.ChooseLHS;
+import Project.Layer_2.ChoosePond;
+import Project.Layer_2.ChooseSandT;
+import Project.Layer_2.ChooseSunset;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

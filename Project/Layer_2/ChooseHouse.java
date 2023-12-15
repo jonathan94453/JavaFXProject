@@ -1,9 +1,8 @@
-package hellofx.Layer_2;
+package Project.Layer_2;
 import java.util.Random;
-// Used Imports 
-import hellofx.QuitProgram;
-import hellofx.StartScreen;
-import hellofx.Layer_1.ChooseStart;
+
+import Project.QuitProgram;
+import Project.Layer_1.ChooseStart;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;

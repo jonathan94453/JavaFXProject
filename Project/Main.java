@@ -1,6 +1,6 @@
 // This project was not created with the assistance of any UI Designer or FXML Files 
 //Everything is created and generated through Java and the Use of Javafx Libraries; 
-package hellofx; 
+package Project; 
 
 import javafx.application.Application;
 import javafx.stage.Stage;
