@@ -93,8 +93,7 @@ public class StartScreen {
 // Event handlers for the first page of the game 
     EventHandler<ActionEvent> choosequit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                QuitProgram quitgame = new QuitProgram(scenewidth, sceneheight, primarystage);
-                primarystage.setScene(quitgame.getscene3()); 
+                javafx.application.Platform.exit(); 
             }
     };
 // Any type of quit button is clicked 

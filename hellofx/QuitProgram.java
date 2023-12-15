@@ -26,7 +26,8 @@ public class QuitProgram {
     private TextField textfield; 
     private Group videoroot;
     private Scene Scene2;  
-
+    private Scene scene4;
+    private Group root4; 
 // Parametrized Constructor 
 public QuitProgram(double scenewidth, double sceneheight, Stage primarystage) {
     this.scenewidth = scenewidth;
@@ -39,6 +40,7 @@ this.scenewidth = scenewidth;
 this.sceneheight = sceneheight; 
 initialize2();
 }
+
 
 
 public void intialize() {

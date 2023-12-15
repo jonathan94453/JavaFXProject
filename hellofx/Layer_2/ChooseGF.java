@@ -1,5 +1,6 @@
 package hellofx.Layer_2;
 
+import hellofx.QuitProgram;
 import hellofx.Layer_1.ChooseStart;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -58,7 +59,7 @@ question.setLayoutY(100);
 
 answer.setLayoutX(200);
 answer.setLayoutY(200);
-answer.setFont(answerfont);
+answer.setFont(answerfont);    
 answer.setOnAction(enteranswer);
 question.setFont(answerfont);
 question.setTextFill(Color.WHITE);
@@ -91,21 +92,41 @@ EventHandler<ActionEvent> enteranswer = new EventHandler<ActionEvent>() {
 
 if(user_input.equals("yes")) {
     question.setText("Sorry but you dont have a girlfriend");
-    PauseTransition pause60 = new PauseTransition(Duration.seconds(1)); 
+    PauseTransition pause60 = new PauseTransition(Duration.seconds(3)); 
     pause60.setOnFinished(event -> {
         question.setText("....Yet?");
     });
-    PauseTransition pause61 = new PauseTransition(Duration.seconds(2)); 
+    PauseTransition pause61 = new PauseTransition(Duration.seconds(5)); 
     pause61.setOnFinished(event -> {
-        pause60.play();
         ChooseStart start80 = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, title); 
-        primaryStage.setScene(start80.getscene());
+        primaryStage.setScene(start80.getscene()); 
     }); 
 
 
 
-
+    pause60.play(); 
     pause61.play(); 
+}
+else if(user_input.equals("no")) {
+    question.setText("That's not right :( "); 
+    PauseTransition pause80 = new PauseTransition(Duration.seconds(2));
+    pause80.setOnFinished(event -> {
+            
+            QuitProgram quit10 = new QuitProgram(scenewidth, sceneheight, primaryStage);
+            primaryStage.setScene(quit10.getscene3()); 
+    }); 
+    pause80.play();
+}
+
+else {
+    question.setText("Sorry that is not a valid option"); 
+    PauseTransition pause81 = new PauseTransition(Duration.seconds(2));
+    pause81.setOnFinished(event -> {
+            QuitProgram quit10 = new QuitProgram(scenewidth, sceneheight);
+            primaryStage.setScene(quit10.getvideoscene());  
+    }); 
+    pause81.play();
+
 }
     }
 }; 

@@ -49,7 +49,7 @@ public class ChooseStart {
 // Extremely Extensive Method, Constructing each Button in the game for each section
 // Of the Map; 
     public void setthescene(String environmentimage, String houseimage, String pondimage, String lhshouse, String gfhouse, String Univeristy, String Sunsetend) {
-        Button Quit = new Button("Quit"); 
+        Button Quit = new Button("Back"); 
         Quit.setOnAction(choosequit); 
         Quit.setLayoutX(400);
         Image backgroundimage = new Image(getClass().getResourceAsStream(environmentimage));
