@@ -2,6 +2,7 @@ package hellofx.Layer_2;
 import java.util.Random;
 // Used Imports 
 import hellofx.QuitProgram;
+import hellofx.StartScreen;
 import hellofx.Layer_1.ChooseStart;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -165,14 +166,14 @@ else if(user_input.equals("Play Fortnite")) {
                 }); 
                 pause.play();   
                 
-
+  
             }
             else {
                 Question.setText("You lost and got emoted on by a 9 year old");
                 PauseTransition pause2 = new PauseTransition(Duration.seconds(3)); 
                 pause2.setOnFinished(event -> {
-                        Fortnite newfortnite = new Fortnite(scenewidth, sceneheight);
-                        primaryStage.setScene(newfortnite.getscene()); 
+                        ChooseStart restart = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, Titlelabel); 
+                        primaryStage.setScene(restart.getscene());
                 });
                 pause2.play();   
                

@@ -1,6 +1,7 @@
 // Choose Start the Game on the main screen 
 package hellofx.Layer_1;
 
+import hellofx.StartScreen;
 import hellofx.Layer_2.ChooseGF;
 import hellofx.Layer_2.ChooseHouse;
 import hellofx.Layer_2.ChooseLHS;
@@ -289,7 +290,8 @@ Sunset.setGraphic(imageview6);
 // EVENT HANDLERS FOR EACH BUTTON 
       EventHandler<ActionEvent> choosequit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                javafx.application.Platform.exit();
+                StartScreen goback = new StartScreen(scenewidth, sceneheight, Titlelabel, Start, primaryStage);
+                primaryStage.setScene(goback.getScene());
             }
     };
 // Event Handler to Choose Logan's House 
@@ -317,7 +319,7 @@ EventHandler<ActionEvent> choosesunset = new EventHandler<ActionEvent>() {
 
 EventHandler<ActionEvent> choosegfhouse = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseGF gf = new ChooseGF();
+            ChooseGF gf = new ChooseGF(scenewidth, sceneheight, Titlelabel, Start, primaryStage);
             primaryStage.setScene(gf.getscene());
     }
 };
