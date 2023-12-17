@@ -18,7 +18,7 @@ public class Main extends Application {
                 final double scenewidth = 800; 
                 final  double sceneheight = 800; 
 // Title label class 
-            Label Titlelabel = new Label("Welcome to Westrichia"); 
+            Label Titlelabel = new Label("Life of Westrich"); 
             Button Start = new Button(); 
             StartScreen background = new StartScreen(scenewidth, sceneheight, Titlelabel, Start, primaryStage); 
             setcurrentscene(background.getScene()); 

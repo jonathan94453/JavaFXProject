@@ -60,7 +60,7 @@ public class StartScreen {
             backgroundview.setFitHeight(sceneheight);
             backgroundview.setFitWidth(scenewidth);
             title.setFont(titlefont); 
-            title.setLayoutX(30);
+            title.setLayoutX(150);
             title.setLayoutY(100);
             //Layouts the start button
             start.setOnAction(choosestart);

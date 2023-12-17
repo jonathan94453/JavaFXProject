@@ -108,6 +108,7 @@ lake.setMinWidth(530);
 lake.setMinHeight(210);
 lake.setOnAction(choosepond);
 
+
 ScaleTransition scaletransition2 = new ScaleTransition(Duration.millis(200), lake);
 // From Size --> To Size; 
 scaletransition2.setFromX(1.0);
