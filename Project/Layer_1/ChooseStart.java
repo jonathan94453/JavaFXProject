@@ -334,7 +334,7 @@ EventHandler<ActionEvent> choosesandt = new EventHandler<ActionEvent>() {
 
 EventHandler<ActionEvent> chooselhs = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseLHS LHS = new ChooseLHS();
+            ChooseLHS LHS = new ChooseLHS(sceneheight, scenewidth, primaryStage, Start, Titlelabel);
             primaryStage.setScene(LHS.getscene());
     }
 }; 
