@@ -51,6 +51,22 @@ private void initialize() {
         housescene = new Scene(root4, scenewidth, sceneheight); 
         sethousescene("/Scene2.JPG"); 
 }
+
+private Boolean checkifabove() {
+    Boolean check = false; 
+    if(points > 500) {
+        check = true; 
+    }
+    return check; 
+}
+
+private void endswitch() {
+    ChooseSunset end = new ChooseSunset(scenewidth, sceneheight, points, primaryStage, Start, Titlelabel);
+    primaryStage.setScene(end.getscene());
+}
+
+
+
 // Scene Architecture for when the house is clicked 
 private void sethousescene(String image) {
 // Question Variable to prompt the user input 
@@ -130,8 +146,12 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
         if(randomint <= 50) {
             Question.setFont(Questionfont);
             Question.setText("Congrats you studied");
+            points += 100; 
+            checkifabove(); 
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.setOnFinished(event -> {
+                points += 100; 
+                checkifabove();
                 ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
                 primaryStage.setScene(scene2.getscene()); 
         });
@@ -146,6 +166,8 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
                     primaryStage.setScene(scene6.getscene());  
             }); 
             pause3.setOnFinished(event -> {
+                points = points - 50;   
+                checkifabove();
                 QuitProgram program1 = new QuitProgram(sceneheight, scenewidth); 
                 primaryStage.setScene(program1.getvideoscene());  
                 pause4.play(); 
@@ -157,9 +179,14 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
 else if(user_input.equals("Play Fortnite")) {
             Random random2 = new Random();
             int randomint2 = random2.nextInt(100) + 1;
-            if (randomint2 <= 5) {
+            if (randomint2 <= 99) {
                 Question.setFont(Questionfont);
-                Question.setText("Congrats you got a victory royale"); 
+                Question.setText("Congrats you got a victory royale");
+                points += 100; 
+                if(checkifabove() == true) {
+                    endswitch();
+                }
+            if(checkifabove() == false) {
                 PauseTransition pause = new PauseTransition(Duration.seconds(3)); 
                 pause.setOnFinished(event -> {
                         Fortnite newfortnite = new Fortnite(scenewidth, sceneheight);
@@ -167,12 +194,15 @@ else if(user_input.equals("Play Fortnite")) {
                 }); 
                 pause.play();   
                 
-  
             }
+            }
+        
             else {
                 Question.setText("You lost and got emoted on by a 9 year old");
                 PauseTransition pause2 = new PauseTransition(Duration.seconds(3)); 
                 pause2.setOnFinished(event -> {
+                        points = points - 50; 
+                        checkifabove();
                         ChooseStart restart = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
                         primaryStage.setScene(restart.getscene());
                 });
@@ -184,5 +214,7 @@ else if(user_input.equals("Play Fortnite")) {
 
     }
 
-};
+}; 
 } 
+
+

@@ -33,8 +33,10 @@ public class QuitProgram {
     private Stage primaryStage;
     private Button Start;
     private Label titlelabel; 
+    private double points; 
 // Parametrized Constructor 
-public QuitProgram(double scenewidth, double sceneheight, Stage primarystage) {
+public QuitProgram(double scenewidth, double sceneheight, double points, Stage primarystage) {
+    this.points = points; 
     this.scenewidth = scenewidth;
     this.sceneheight = sceneheight;
     this.primaryStage = primarystage; 
@@ -58,7 +60,7 @@ public QuitProgram(Double scenewidth, Double sceneheight, Stage primaryStage, Bu
 
 public void intialize() {
     root3 = new Group();
-    scene3 = new Scene(root3, scenewidth, sceneheight); 
+    scene3 = new Scene(root3, scenewidth, sceneheight);    
     setquitscene("C:/Jonathan/JavaFXProject/logandance2.mp4"); 
     
 }
@@ -85,7 +87,7 @@ private void setthequitscene(String videopath) {
     loganvideo2.setFitWidth(scenewidth);     
     PauseTransition pause94 = new PauseTransition(Duration.seconds(3));
     pause94.setOnFinished(event -> {
-            ChooseStart start = new ChooseStart(scenewidth, sceneheight, primaryStage, Start, titlelabel); 
+            ChooseStart start = new ChooseStart(scenewidth, sceneheight, points, primaryStage, Start, titlelabel); 
             primaryStage.setScene(start.getscene()); 
     });
     

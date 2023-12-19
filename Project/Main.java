@@ -17,10 +17,11 @@ public class Main extends Application {
   // scenewidth and sceneheight are referenced in almost every class              
                 final double scenewidth = 800; 
                 final  double sceneheight = 800; 
+                double points = 0; 
 // Title label class 
             Label Titlelabel = new Label("Life of Westrich"); 
             Button Start = new Button(); 
-            StartScreen background = new StartScreen(scenewidth, sceneheight, 0.0, Titlelabel, Start, primaryStage); 
+            StartScreen background = new StartScreen(scenewidth, sceneheight, points, Titlelabel, Start, primaryStage); 
             setcurrentscene(background.getScene()); 
 // Stage configuration (Icon is a house from the main village) 
             primaryStage.getIcons().add(new Image("/Scene2.jpg")); 
