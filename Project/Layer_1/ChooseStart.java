@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class ChooseStart {
 // Instance Variables 
-    private double points; 
+    // private double points; 
     private double sceneheight;
     private double scenewidth;
     private Group root2;
