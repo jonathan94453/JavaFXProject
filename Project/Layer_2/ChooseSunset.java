@@ -20,8 +20,10 @@ public class ChooseSunset {
     private Stage primaryStage;
     private Button Start;
     private Label title; 
+    private double points; 
 
-    public ChooseSunset(double scenewidth, double sceneheight, Stage primaryStage, Button Start, Label title) {
+    public ChooseSunset(double scenewidth, double sceneheight, double points, Stage primaryStage, Button Start, Label title) {
+        this.points = points; 
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight;
         this.primaryStage = primaryStage;
@@ -67,12 +69,9 @@ public Scene getscene() {
 
 EventHandler<ActionEvent> goback = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseStart gostart = new ChooseStart(scenewidth, sceneheight, primaryStage, Start, title);
+            ChooseStart gostart = new ChooseStart(scenewidth, sceneheight, points, primaryStage, Start, title);
             primaryStage.setScene(gostart.getscene());
     }
-
-
-
 
 
 

@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 
 public class StartScreen {
 // Instance variables
+    private double points; 
     private Group root; 
     private Scene scene;
     private double scenewidth;
@@ -23,7 +24,8 @@ public class StartScreen {
     private Button start;
     private Stage primarystage; 
 // Paramaterized Constructor to assign values to instance variables 
-    public StartScreen(double scenewidth, double sceneheight, Label title, Button start, Stage primarystage) {
+    public StartScreen(double scenewidth, double sceneheight, double points, Label title, Button start, Stage primarystage) {
+        this.points = points; 
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight;
         this.title = title;
@@ -49,7 +51,6 @@ public class StartScreen {
         //Adds the quit button
             Button quit = new Button("Quit"); 
             Button ShowMap = new Button("Show Map"); 
-
 
 
 //Set Layout of everything
@@ -105,7 +106,7 @@ public class StartScreen {
 // Start the game button is clicked 
     EventHandler<ActionEvent> choosestart = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
-        ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, primarystage, start, title); 
+        ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, 0.0, primarystage, start, title); 
         primarystage.setScene(scene2.getscene()); 
 }
 };

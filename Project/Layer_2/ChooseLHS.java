@@ -30,8 +30,10 @@ public class ChooseLHS {
     private TextField answer; 
     private Label topscreen; 
     private PauseTransition pause99; 
+    private double points; 
 
-    public ChooseLHS(double scenewidth, double sceneheight, Stage primaryStage, Button Start, Label title) {
+    public ChooseLHS(double scenewidth, double sceneheight, double points, Stage primaryStage, Button Start, Label title) {
+        this.points = points; 
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight; 
         this.primaryStage = primaryStage;
@@ -44,7 +46,7 @@ private void intialize() {
     lhsscene = new Scene(lhsroot, 800, 800);
     pause99 = new PauseTransition(Duration.seconds(3));
         pause99.setOnFinished(event ->{
-            ChooseStart start = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, title);
+            ChooseStart start = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title);
             primaryStage.setScene(start.getscene());
         }); 
     setscene("/LHS.jpg"); 
@@ -108,7 +110,7 @@ public PauseTransition getpause99() {
 
 EventHandler<ActionEvent> goback = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseStart gostart = new ChooseStart(scenewidth, sceneheight, primaryStage, Start, title);
+            ChooseStart gostart = new ChooseStart(scenewidth, sceneheight, points, primaryStage, Start, title);
             primaryStage.setScene(gostart.getscene());
     }
 }; 
@@ -119,13 +121,13 @@ String user_input = answer.getText();
 
 if(user_input.equals("yes")) {
     Random random = new Random();
-    int randomint = random.nextInt(10) + 1;
-    if(randomint == 5) {
+    int randomint = random.nextInt(100) + 1;
+    if(randomint <= 50) {
         topscreen.setText("Wow! your so smart?!");
         pause99.play();
     }
-    else {
-        topscreen.setText("didn't end up in honor roll...");
+    else {   
+        topscreen.setText("no you didn't...");
         pause99.play(); 
     }
 }

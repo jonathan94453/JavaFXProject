@@ -24,6 +24,7 @@ import javafx.util.Duration;
 
 public class ChooseHouse {
 // Instance Variables- 
+    private double points; 
     private double scenewidth; 
     private double sceneheight;
     private Stage primaryStage;
@@ -35,7 +36,8 @@ public class ChooseHouse {
     private Button Start; 
     private Font Questionfont; 
 // Paramterized Constructor, datapassing into the object for the scene construction 
-public ChooseHouse(double scenewidth, double sceneheight, Label Titlelabel, Stage primaryStage, Button Start) {
+public ChooseHouse(double scenewidth, double sceneheight, double points, Label Titlelabel, Stage primaryStage, Button Start) {
+    this.points = points; 
     this.scenewidth = scenewidth; 
     this.sceneheight = sceneheight; 
     this.primaryStage = primaryStage; 
@@ -124,13 +126,13 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
     String user_input = answer.getText(); 
     if (user_input.equals("Study")) {
         Random random = new Random();
-        int randomint = random.nextInt(10) + 1;
-        if(randomint == 5) {
+        int randomint = random.nextInt(100) + 1;
+        if(randomint <= 50) {
             Question.setFont(Questionfont);
             Question.setText("Congrats you studied");
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.setOnFinished(event -> {
-                ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, Titlelabel); 
+                ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
                 primaryStage.setScene(scene2.getscene()); 
         });
         pause.play();   
@@ -140,7 +142,7 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
             PauseTransition pause3 = new PauseTransition(Duration.seconds(2));
             PauseTransition pause4 = new PauseTransition(Duration.seconds(4));
             pause4.setOnFinished(event -> {
-                    ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, Titlelabel); 
+                    ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
                     primaryStage.setScene(scene6.getscene());  
             }); 
             pause3.setOnFinished(event -> {
@@ -154,8 +156,8 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
     }
 else if(user_input.equals("Play Fortnite")) {
             Random random2 = new Random();
-            int randomint2 = random2.nextInt(10) + 1;
-            if (randomint2 == 5) {
+            int randomint2 = random2.nextInt(100) + 1;
+            if (randomint2 <= 5) {
                 Question.setFont(Questionfont);
                 Question.setText("Congrats you got a victory royale"); 
                 PauseTransition pause = new PauseTransition(Duration.seconds(3)); 
@@ -171,20 +173,13 @@ else if(user_input.equals("Play Fortnite")) {
                 Question.setText("You lost and got emoted on by a 9 year old");
                 PauseTransition pause2 = new PauseTransition(Duration.seconds(3)); 
                 pause2.setOnFinished(event -> {
-                        ChooseStart restart = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, Titlelabel); 
+                        ChooseStart restart = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
                         primaryStage.setScene(restart.getscene());
                 });
                 pause2.play();   
                
             }
         }
-
-
-    
-
-
-
-
 
 
     }

@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class ChooseStart {
 // Instance Variables 
-    // private double points; 
+    private double points;
     private double sceneheight;
     private double scenewidth;
     private Group root2;
@@ -32,7 +32,8 @@ public class ChooseStart {
     private Button Start;
     private Label Titlelabel; 
 // Value Passing with Constructor 
-    public ChooseStart(Double sceneheight, Double scenewidth, Stage primaryStage, Button Start, Label Titlelabel) {
+    public ChooseStart(Double sceneheight, Double scenewidth, Double points, Stage primaryStage, Button Start, Label Titlelabel) {   
+        this.points = points; 
         this.sceneheight = sceneheight;
         this.scenewidth = scenewidth; 
         this.primaryStage = primaryStage; 
@@ -292,28 +293,28 @@ Sunset.setGraphic(imageview6);
 // EVENT HANDLERS FOR EACH BUTTON 
       EventHandler<ActionEvent> choosequit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                StartScreen goback = new StartScreen(scenewidth, sceneheight, Titlelabel, Start, primaryStage);
+                StartScreen goback = new StartScreen(scenewidth, sceneheight, points, Titlelabel, Start, primaryStage);
                 primaryStage.setScene(goback.getScene());
             }
     };
 // Event Handler to Choose Logan's House 
     EventHandler<ActionEvent> choosehouse = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
-            ChooseHouse clickHouse = new ChooseHouse(scenewidth, sceneheight, Titlelabel, primaryStage, Start);
+            ChooseHouse clickHouse = new ChooseHouse(scenewidth, sceneheight, points, Titlelabel, primaryStage, Start);
             primaryStage.setScene(clickHouse.getscenehouse()); 
         }
     };
 // Pond button Action
 EventHandler <ActionEvent> choosepond = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-        ChoosePond pond = new ChoosePond(sceneheight, scenewidth, Titlelabel, Start, primaryStage);
+        ChoosePond pond = new ChoosePond(sceneheight, scenewidth, points, Titlelabel, Start, primaryStage);
         primaryStage.setScene(pond.getscene());
     }
 };
 
 EventHandler<ActionEvent> choosesunset = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseSunset sunset = new ChooseSunset(sceneheight, scenewidth, primaryStage, Start, Titlelabel);
+            ChooseSunset sunset = new ChooseSunset(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel);
             primaryStage.setScene(sunset.getscene());
     }
 };
@@ -321,21 +322,21 @@ EventHandler<ActionEvent> choosesunset = new EventHandler<ActionEvent>() {
 
 EventHandler<ActionEvent> choosegfhouse = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseGF gf = new ChooseGF(scenewidth, sceneheight, Titlelabel, Start, primaryStage);
+            ChooseGF gf = new ChooseGF(scenewidth, sceneheight, points, Titlelabel, Start, primaryStage);
             primaryStage.setScene(gf.getscene());
     }
 };
 
 EventHandler<ActionEvent> choosesandt = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseSandT college = new ChooseSandT(scenewidth, sceneheight, primaryStage, Start, Titlelabel);
+            ChooseSandT college = new ChooseSandT(scenewidth, sceneheight, points, primaryStage, Start, Titlelabel);
             primaryStage.setScene(college.getscene());
     }
 }; 
 
 EventHandler<ActionEvent> chooselhs = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseLHS LHS = new ChooseLHS(sceneheight, scenewidth, primaryStage, Start, Titlelabel);
+            ChooseLHS LHS = new ChooseLHS(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel);
             primaryStage.setScene(LHS.getscene());
     }
 }; 

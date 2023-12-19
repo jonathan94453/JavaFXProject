@@ -28,10 +28,12 @@ public class ChooseSandT {
     private TextField answer;
     private Label topscreen; 
     private PauseTransition pause99; 
+    private double points; 
 
 
-    public ChooseSandT(double scenewidth, double sceneheight, Stage primaryStage, Button Start, Label title) {
-        ChooseLHS pausemethod = new ChooseLHS(scenewidth, sceneheight, primaryStage, Start, title); 
+    public ChooseSandT(double scenewidth, double sceneheight, double points, Stage primaryStage, Button Start, Label title) {
+        ChooseLHS pausemethod = new ChooseLHS(scenewidth, sceneheight, points, primaryStage, Start, title); 
+        this.points = points; 
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight;
         this.primaryStage = primaryStage;
@@ -84,7 +86,7 @@ public Scene getscene() {
 
 EventHandler<ActionEvent> goback = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseStart gostart = new ChooseStart(scenewidth, sceneheight, primaryStage, Start, title);
+            ChooseStart gostart = new ChooseStart(scenewidth, sceneheight, points, primaryStage, Start, title);
             primaryStage.setScene(gostart.getscene());
     }
 }; 
@@ -94,8 +96,8 @@ EventHandler<ActionEvent> entertext = new EventHandler<ActionEvent>() {
 
 if(user_input.equals("yes")) {
     Random random = new Random();
-    int randomint = random.nextInt(10) + 1;
-    if(randomint == 5) {
+    int randomint = random.nextInt(100) + 1;
+    if(randomint <= 50) {
         topscreen.setText("You landed a 6 figure engineering position at spacex");
         pause99.play();
     }

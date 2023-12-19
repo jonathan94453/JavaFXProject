@@ -27,11 +27,13 @@ public class ChooseGF {
     private Label title;
     private Button Start;
     private Stage primaryStage; 
-    public ChooseGF(double scenewidth,  double sceneheight, Label title, Button Start, Stage primaryStage) {
+    private double points; 
+    public ChooseGF(double scenewidth, double sceneheight, double points, Label title, Button Start, Stage primaryStage) {
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight;
         this.title = title;
-        this.Start = Start;
+        this.Start = Start; 
+        this.points = points; 
         this.primaryStage = primaryStage; 
         intialize(); 
     }
@@ -94,7 +96,7 @@ if(user_input.equals("yes")) {
     });
     PauseTransition pause61 = new PauseTransition(Duration.seconds(5)); 
     pause61.setOnFinished(event -> {
-        ChooseStart start80 = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, title); 
+        ChooseStart start80 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title); 
         primaryStage.setScene(start80.getscene()); 
     }); 
 

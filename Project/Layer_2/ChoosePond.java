@@ -28,6 +28,7 @@ import javafx.util.Duration;
 
 public class ChoosePond {
   
+    private double points; 
     private Group pondroot;
     private Scene pondscene; 
     private TextField answer;
@@ -37,12 +38,13 @@ public class ChoosePond {
     private Stage primaryStage;
     private Label title; 
     private Button start; 
-public ChoosePond(double scenewidth, double sceneheight, Label title, Button start, Stage primaryStage) {
+public ChoosePond(double scenewidth, double sceneheight, double points, Label title, Button start, Stage primaryStage) {
     this.scenewidth = scenewidth;
     this.sceneheight = sceneheight;
     this.title = title;
     this.start = start;
     this.primaryStage = primaryStage; 
+    this.points = points; 
     initialize(); 
 }
 
@@ -124,12 +126,12 @@ EventHandler<ActionEvent> enteranswer = new EventHandler<ActionEvent>() {
 
 if(user_input.equals("cast")) {
     Random random = new Random(); 
-    int randomint = random.nextInt(10) + 1;
-            if(randomint == 5) {
+    int randomint = random.nextInt(100) + 1;
+            if(randomint <= 90) {
                 question.setText("Congratualations you got a Fish!!");
                 PauseTransition pause4 = new PauseTransition(Duration.seconds(4));
                 pause4.setOnFinished(event -> {
-                        ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, primaryStage, start, title); 
+                        ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, start, title); 
                         primaryStage.setScene(scene6.getscene());  
                 }); 
                 pause4.play();
@@ -140,7 +142,7 @@ if(user_input.equals("cast")) {
                 PauseTransition pause3 = new PauseTransition(Duration.seconds(2));
                 PauseTransition pause4 = new PauseTransition(Duration.seconds(4));
                 pause4.setOnFinished(event -> {
-                        ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, primaryStage, start, title); 
+                        ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, start, title); 
                         primaryStage.setScene(scene6.getscene());  
                 }); 
                 pause3.setOnFinished(event -> {
@@ -162,7 +164,7 @@ else if(user_input.equals("quit")) {
     question.setText("Ok, you will be directed to the map again shortly"); 
     PauseTransition pause8 = new PauseTransition(Duration.seconds(2));
                 pause8.setOnFinished(event -> {
-                        ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, primaryStage, start, title); 
+                        ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, start, title); 
                         primaryStage.setScene(scene6.getscene());  
                 }); 
                 pause8.play();
@@ -173,7 +175,7 @@ else {
     question.setText("Sorry that is not a valid object, please type cast or quit"); 
      PauseTransition pause23 = new PauseTransition(Duration.seconds(2));
                 pause23.setOnFinished(event -> {
-                        StartScreen restart = new StartScreen(scenewidth, sceneheight, title, start, primaryStage); 
+                        StartScreen restart = new StartScreen(scenewidth, sceneheight, points, title, start, primaryStage); 
                         primaryStage.setScene(restart.getScene());  
                 }); 
                 pause23.play();
