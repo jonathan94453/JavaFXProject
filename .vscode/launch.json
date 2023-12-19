@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
-            "mainClass": "hellofx.Main",
+            "mainClass": "Project.Main",
             "projectName": "JavaFXProject_1fe30e87"
         },
         {

@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 public class ChooseStart {
 // Instance Variables 
+    private double points; 
     private double sceneheight;
     private double scenewidth;
     private Group root2;
@@ -312,7 +313,7 @@ EventHandler <ActionEvent> choosepond = new EventHandler<ActionEvent>() {
 
 EventHandler<ActionEvent> choosesunset = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseSunset sunset = new ChooseSunset();
+            ChooseSunset sunset = new ChooseSunset(sceneheight, scenewidth, primaryStage, Start, Titlelabel);
             primaryStage.setScene(sunset.getscene());
     }
 };
@@ -327,7 +328,7 @@ EventHandler<ActionEvent> choosegfhouse = new EventHandler<ActionEvent>() {
 
 EventHandler<ActionEvent> choosesandt = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
-            ChooseSandT college = new ChooseSandT();
+            ChooseSandT college = new ChooseSandT(scenewidth, sceneheight, primaryStage, Start, Titlelabel);
             primaryStage.setScene(college.getscene());
     }
 }; 

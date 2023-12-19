@@ -109,6 +109,11 @@ public class StartScreen {
         primarystage.setScene(scene2.getscene()); 
 }
 };
+EventHandler<ActionEvent> sceneback = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+            primarystage.setScene(scene);
+    }
+};
 //Showmap button is clicked 
     EventHandler<ActionEvent> Showthemap = new EventHandler<ActionEvent>() {
         public void handle(ActionEvent e) {
@@ -121,16 +126,26 @@ public class StartScreen {
             backgroundview.setFitWidth(scenewidth);
 // Quit Button quits out of the application 
 // I make quit buttons for any scene that still needs more extensive architecture 
+            Button Back = new Button("Back"); 
             Button quit = new Button("Quit"); 
             quit.setLayoutX(350);
             quit.setLayoutY(100);
             quit.setMinHeight(20);
             quit.setMinWidth(100);
+
+            Back.setLayoutX(350);
+            Back.setLayoutY(160);
+            Back.setMinHeight(20);
+            Back.setMinWidth(100);
+
+            Back.setOnAction(sceneback);
             quit.setOnAction(quitapplication);
             maproot.getChildren().add(backgroundview); 
             maproot.getChildren().add(quit); 
+            maproot.getChildren().add(Back); 
             primarystage.setScene(map);       
 
         }
     }; 
+
 }

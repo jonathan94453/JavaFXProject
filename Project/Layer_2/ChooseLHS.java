@@ -1,6 +1,9 @@
 package Project.Layer_2;
 
+import java.util.Random;
+
 import Project.Layer_1.ChooseStart;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -10,7 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ChooseLHS {
     private Group lhsroot;
@@ -20,7 +27,9 @@ public class ChooseLHS {
     private Stage primaryStage;
     private Button Start;
     private Label title; 
-
+    private TextField answer; 
+    private Label topscreen; 
+    private PauseTransition pause99; 
 
     public ChooseLHS(double scenewidth, double sceneheight, Stage primaryStage, Button Start, Label title) {
         this.scenewidth = scenewidth;
@@ -32,7 +41,12 @@ public class ChooseLHS {
     }
 private void intialize() {
     lhsroot = new Group();
-    lhsscene = new Scene(lhsroot, 800, 800); 
+    lhsscene = new Scene(lhsroot, 800, 800);
+    pause99 = new PauseTransition(Duration.seconds(3));
+        pause99.setOnFinished(event ->{
+            ChooseStart start = new ChooseStart(sceneheight, scenewidth, primaryStage, Start, title);
+            primaryStage.setScene(start.getscene());
+        }); 
     setscene("/LHS.jpg"); 
 }
 
@@ -41,16 +55,23 @@ private void setscene(String gfimage) {
     ImageView gfimages = new ImageView(image); 
     gfimages.setFitWidth(lhsscene.getWidth());
     gfimages.setFitHeight(lhsscene.getHeight()); 
-    TextField answer = new TextField(); 
-    Label topscreen = new Label("Welcome to LHS"); 
-    Button back = new Button("Back"); 
-    back.setLayoutX(500);
-    back.setLayoutY(50); 
+    answer = new TextField(); 
+    topscreen = new Label("Welcome to LHS! Are you on Honor Roll? (yes/no)"); 
+    Button back = new Button("Back");
+    Font topscreenfont = new Font("Times New Roman", 30); 
+    back.setLayoutX(300);
+    back.setLayoutY(30); 
     back.setOnAction(goback);
-    answer.setLayoutX(400);
-    answer.setLayoutY(300);
 
-    topscreen.setLayoutX(300);
+// TextField and layout 
+    answer.setMinWidth(100);
+    answer.setMinHeight(30); 
+    answer.setLayoutX(370);
+    answer.setLayoutY(200);
+    answer.setOnAction(entertext);
+    topscreen.setFont(topscreenfont); 
+    topscreen.setTextFill(Color.WHITE);
+    topscreen.setLayoutX(60);
     topscreen.setLayoutY(100);;
 
 
@@ -71,10 +92,72 @@ lhsroot.getChildren().add(back);
 public Scene getscene() {
     return lhsscene; 
 }
+
+public EventHandler<ActionEvent> getentertext() {
+    return entertext; 
+}
+
+public PauseTransition getpause99() {
+    return pause99; 
+}
+
+
+
+
+
+
 EventHandler<ActionEvent> goback = new EventHandler<ActionEvent>() {
     public void handle(ActionEvent e) {
             ChooseStart gostart = new ChooseStart(scenewidth, sceneheight, primaryStage, Start, title);
             primaryStage.setScene(gostart.getscene());
+    }
+}; 
+EventHandler<ActionEvent> entertext = new EventHandler<ActionEvent>() {
+    public void handle(ActionEvent e) {
+    
+String user_input = answer.getText(); 
+
+if(user_input.equals("yes")) {
+    Random random = new Random();
+    int randomint = random.nextInt(10) + 1;
+    if(randomint == 5) {
+        topscreen.setText("Wow! your so smart?!");
+        pause99.play();
+    }
+    else {
+        topscreen.setText("didn't end up in honor roll...");
+        pause99.play(); 
+    }
+}
+
+else if(user_input.equals("no")) {
+    topscreen.setText("Maybe next time :(");
+       pause99.play();
+
+}
+
+
+else {
+    topscreen.setText("Not a recognized input, please enter exactly (yes/no)");
+    pause99.play(); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }; 
 
