@@ -136,24 +136,27 @@ root4.getChildren().add(answer);
 public Scene getscenehouse() {
     return housescene; 
 }
-// Event Handler when something is entered into texfield 
+// Event Handler when something is entered into texfield
+// Really complicated eventhandler mainly becauuse there is so much if else statements 
 EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
     public void handle(ActionEvent e) {
     String user_input = answer.getText(); 
-    if (user_input.equals("Study")) {
+if (user_input.equals("Study")) {
         Random random = new Random();
         int randomint = random.nextInt(100) + 1;
         if(randomint <= 50) {
             Question.setFont(Questionfont);
             Question.setText("Congrats you studied");
-            points += 100; 
-            checkifabove(); 
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
-            pause.setOnFinished(event -> {
-                points += 100; 
-                checkifabove();
-                ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
-                primaryStage.setScene(scene2.getscene()); 
+                        pause.setOnFinished(event -> {
+                        points += 100; 
+                     if(checkifabove() == true) {
+                            endswitch();
+                 }
+                    else if(checkifabove() != true) {
+                    ChooseStart scene2 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
+                    primaryStage.setScene(scene2.getscene()); 
+                    }
         });
         pause.play();   
         }
@@ -165,12 +168,18 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
                     ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
                     primaryStage.setScene(scene6.getscene());  
             }); 
+
+
             pause3.setOnFinished(event -> {
                 points = points - 50;   
-                checkifabove();
-                QuitProgram program1 = new QuitProgram(sceneheight, scenewidth); 
-                primaryStage.setScene(program1.getvideoscene());  
-                pause4.play(); 
+                    if(checkifabove() == true) {
+                         endswitch();
+                    }
+                    else if (checkifabove() != true) {
+                    QuitProgram program1 = new QuitProgram(sceneheight, scenewidth); 
+                    primaryStage.setScene(program1.getvideoscene());  
+                    pause4.play(); 
+                    }
         });
         pause3.play();  
 
@@ -179,18 +188,18 @@ EventHandler<ActionEvent> answerentered = new EventHandler<ActionEvent>() {;
 else if(user_input.equals("Play Fortnite")) {
             Random random2 = new Random();
             int randomint2 = random2.nextInt(100) + 1;
-            if (randomint2 <= 99) {
+            if (randomint2 <= 60) {
                 Question.setFont(Questionfont);
                 Question.setText("Congrats you got a victory royale");
                 points += 100; 
                 if(checkifabove() == true) {
                     endswitch();
                 }
-            if(checkifabove() == false) {
+            else if(checkifabove() != true) {
                 PauseTransition pause = new PauseTransition(Duration.seconds(3)); 
                 pause.setOnFinished(event -> {
-                        Fortnite newfortnite = new Fortnite(scenewidth, sceneheight);
-                        primaryStage.setScene(newfortnite.getscene()); 
+                        ChooseStart scene7 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
+                        primaryStage.setScene(scene7.getscene());  
                 }); 
                 pause.play();   
                 
@@ -202,9 +211,13 @@ else if(user_input.equals("Play Fortnite")) {
                 PauseTransition pause2 = new PauseTransition(Duration.seconds(3)); 
                 pause2.setOnFinished(event -> {
                         points = points - 50; 
-                        checkifabove();
+                        if(checkifabove() == true) {
+                            endswitch();
+                        }
+                        else if(checkifabove() != true) {
                         ChooseStart restart = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, Titlelabel); 
                         primaryStage.setScene(restart.getscene());
+                        } 
                 });
                 pause2.play();   
                

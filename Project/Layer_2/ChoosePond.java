@@ -53,7 +53,17 @@ private void initialize() {
     pondscene = new Scene(pondroot, 800, 800); 
     setscene("/Pond.jpg"); 
 }
-
+private Boolean checkifover() {
+    Boolean check = false; 
+    if(points > 500) {
+        check = true; 
+    }
+    return check; 
+}
+private void endscene() {
+    ChooseSunset end = new ChooseSunset(scenewidth, sceneheight, points, primaryStage, start, title);
+    primaryStage.setScene(end.getscene());
+}
     
 private void setscene(String pondimage) {
     Image image = new Image(pondimage);
@@ -127,12 +137,18 @@ EventHandler<ActionEvent> enteranswer = new EventHandler<ActionEvent>() {
 if(user_input.equals("cast")) {
     Random random = new Random(); 
     int randomint = random.nextInt(100) + 1;
-            if(randomint <= 90) {
+            if(randomint <= 50) {
                 question.setText("Congratualations you got a Fish!!");
                 PauseTransition pause4 = new PauseTransition(Duration.seconds(4));
                 pause4.setOnFinished(event -> {
+                        points += 100; 
+                                if(checkifover() == true) {
+                                    endscene();
+                                }
+                                else if(checkifover() != true) {
                         ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, start, title); 
                         primaryStage.setScene(scene6.getscene());  
+                                }
                 }); 
                 pause4.play();
             }
@@ -142,13 +158,21 @@ if(user_input.equals("cast")) {
                 PauseTransition pause3 = new PauseTransition(Duration.seconds(2));
                 PauseTransition pause4 = new PauseTransition(Duration.seconds(4));
                 pause4.setOnFinished(event -> {
+                
                         ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, start, title); 
                         primaryStage.setScene(scene6.getscene());  
+                                        
                 }); 
                 pause3.setOnFinished(event -> {
+                    points -= 50; 
+                    if(checkifover() == true) {
+                        endscene();
+                    }
+                    else if(checkifover() != true) {
                     QuitProgram program1 = new QuitProgram(sceneheight, scenewidth); 
                     primaryStage.setScene(program1.getvideoscene());  
                     pause4.play(); 
+                    } 
             });
             pause3.play();  
     
@@ -161,7 +185,7 @@ if(user_input.equals("cast")) {
 }
 
 else if(user_input.equals("quit")) {
-    question.setText("Ok, you will be directed to the map again shortly"); 
+    question.setText("Going Back....."); 
     PauseTransition pause8 = new PauseTransition(Duration.seconds(2));
                 pause8.setOnFinished(event -> {
                         ChooseStart scene6 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, start, title); 

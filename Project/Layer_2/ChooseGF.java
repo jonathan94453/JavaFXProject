@@ -43,6 +43,18 @@ private void intialize() {
     setscene("/gf.jpg"); 
 }
 
+private Boolean checkifover() {
+    Boolean check = false;
+    if(points > 500) {
+        check = true;
+    }
+    return check; 
+}
+private void endscene() {
+    ChooseSunset end = new ChooseSunset(scenewidth, sceneheight, points, primaryStage, Start, title);
+    primaryStage.setScene(end.getscene());
+}
+
 private void setscene(String gfimage) {
     Image image = new Image(gfimage); 
     ImageView gfimages = new ImageView(image); 
@@ -96,8 +108,16 @@ if(user_input.equals("yes")) {
     });
     PauseTransition pause61 = new PauseTransition(Duration.seconds(5)); 
     pause61.setOnFinished(event -> {
+
+        
+        if(checkifover() == true) {
+            endscene();
+        }
+
+        else if(checkifover() != true) {
         ChooseStart start80 = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title); 
         primaryStage.setScene(start80.getscene()); 
+        }
     }); 
 
 
@@ -107,6 +127,7 @@ if(user_input.equals("yes")) {
 }
 else if(user_input.equals("no")) {
     question.setText("That's not right :( "); 
+    points -= 50; 
     PauseTransition pause80 = new PauseTransition(Duration.seconds(2));
     pause80.setOnFinished(event -> {
             
