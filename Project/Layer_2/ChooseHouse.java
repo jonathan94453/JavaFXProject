@@ -54,7 +54,7 @@ private void initialize() {
 
 private Boolean checkifabove() {
     Boolean check = false; 
-    if(points > 500) {
+    if(points > 200) {
         check = true; 
     }
     return check; 
