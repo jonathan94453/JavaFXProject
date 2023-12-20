@@ -41,13 +41,29 @@ public class ChooseLHS {
         this.title = title; 
         intialize(); 
     }
+    private Boolean checkifover() {
+            Boolean check = false;
+            if(points > 500) {
+                check = true;
+            }
+            return check; 
+    }
+    private void endscene() {
+        ChooseSunset end = new ChooseSunset(scenewidth, sceneheight, points, primaryStage, Start, title);
+        primaryStage.setScene(end.getscene());
+    }
 private void intialize() {
     lhsroot = new Group();
     lhsscene = new Scene(lhsroot, 800, 800);
     pause99 = new PauseTransition(Duration.seconds(3));
         pause99.setOnFinished(event ->{
+            if(checkifover() == true) {
+                endscene();
+            }
+            else if(checkifover() != true) {
             ChooseStart start = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title);
             primaryStage.setScene(start.getscene());
+            }
         }); 
     setscene("/LHS.jpg"); 
 }
@@ -123,16 +139,19 @@ if(user_input.equals("yes")) {
     Random random = new Random();
     int randomint = random.nextInt(100) + 1;
     if(randomint <= 50) {
+        points += 100; 
         topscreen.setText("Wow! your so smart?!");
         pause99.play();
     }
     else {   
+        points -= 50; 
         topscreen.setText("no you didn't...");
         pause99.play(); 
     }
 }
 
 else if(user_input.equals("no")) {
+    points -= 50; 
     topscreen.setText("Maybe next time :(");
        pause99.play();
 

@@ -108,7 +108,7 @@ if(user_input.equals("yes")) {
     });
     PauseTransition pause61 = new PauseTransition(Duration.seconds(5)); 
     pause61.setOnFinished(event -> {
-
+points += 100; 
         
         if(checkifover() == true) {
             endscene();
@@ -130,9 +130,13 @@ else if(user_input.equals("no")) {
     points -= 50; 
     PauseTransition pause80 = new PauseTransition(Duration.seconds(2));
     pause80.setOnFinished(event -> {
-            
+            if(checkifover() == true) {
+                endscene();
+            }
+            else if(checkifover() != true) {
             QuitProgram quit10 = new QuitProgram(scenewidth, sceneheight, primaryStage, Start, title); 
             primaryStage.setScene(quit10.getscene94()); 
+            }
     }); 
     pause80.play();
 }

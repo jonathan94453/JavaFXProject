@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ChooseSandT {
     private Group sandtgroup;
@@ -32,17 +33,37 @@ public class ChooseSandT {
 
 
     public ChooseSandT(double scenewidth, double sceneheight, double points, Stage primaryStage, Button Start, Label title) {
-        ChooseLHS pausemethod = new ChooseLHS(scenewidth, sceneheight, points, primaryStage, Start, title); 
         this.points = points; 
         this.scenewidth = scenewidth;
         this.sceneheight = sceneheight;
         this.primaryStage = primaryStage;
         this.Start = Start;
         this.title = title; 
-        pause99 = pausemethod.getpause99(); 
         sandtgroup = new Group();
         sandtscene = new Scene(sandtgroup, 800, 800); 
+        pause99 = new PauseTransition(Duration.seconds(2));
+        pause99.setOnFinished(event->{
+                if(checkifover() == true) {
+                    endscene();
+                }
+                else if(checkifover() != true) {
+                    ChooseStart start = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title); 
+                    primaryStage.setScene(start.getscene());
+                }
+        });
         setscene("/SANDT.jpg"); 
+    }
+
+    private Boolean checkifover() {
+        Boolean check = false;
+        if(points > 500) {
+            check = true;
+        }
+        return check; 
+    }
+    private void endscene() {
+        ChooseSunset end = new ChooseSunset(scenewidth, sceneheight, points, primaryStage, Start, title);
+        primaryStage.setScene(end.getscene()); 
     }
 
 private void setscene(String imageString) {
@@ -99,24 +120,59 @@ if(user_input.equals("yes")) {
     int randomint = random.nextInt(100) + 1;
     if(randomint <= 50) {
         topscreen.setText("You landed a 6 figure engineering position at spacex");
+        PauseTransition pause99 = new PauseTransition(Duration.seconds(2));
+        pause99.setOnFinished(event->{
+            points += 100; 
+                if(checkifover() == true) {
+                    endscene();
+                }
+                else if(checkifover() != true) {
+                    ChooseStart start = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title); 
+                    primaryStage.setScene(start.getscene());
+                }
+        });
         pause99.play();
     }
     else {
         topscreen.setText("umm you still need to pass algebra II");
-        pause99.play(); 
+        points -= 50; 
+        PauseTransition pause92 = new PauseTransition(Duration.seconds(2));
+        pause92.setOnFinished(event->{
+                if(checkifover() == true) {
+                    endscene();
+                }
+                else if(checkifover() != true) {
+                    ChooseStart start = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title); 
+                    primaryStage.setScene(start.getscene());
+                }
+        });
+        pause92.play(); 
     }
 }
 
 else if(user_input.equals("no")) {
+    points -= 50; 
     topscreen.setText("going to get your masters?");
-       pause99.play();
+       PauseTransition pause732 = new PauseTransition(Duration.seconds(2));
+        pause732.setOnFinished(event->{
+                if(checkifover() == true) {
+                    endscene();
+                }
+                else if(checkifover() != true) {
+                    ChooseStart start = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title); 
+                    primaryStage.setScene(start.getscene());
+                }
+        });
+        pause732.play(); 
 
 }
 
 
 else {
     topscreen.setText("Not a recognized input, please enter exactly (yes/no)");
-    pause99.play(); 
+    ChooseStart start = new ChooseStart(sceneheight, scenewidth, points, primaryStage, Start, title); 
+    primaryStage.setScene(start.getscene()); 
+   
 }
 
     }

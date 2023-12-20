@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -45,9 +46,11 @@ Button back = new Button("Back");
 back.setLayoutX(350);
 back.setLayoutY(20);
 back.setOnAction(goback);
-
-
-
+Font Congratsfont = new Font("Times New Roman", 30); 
+Label Congrats = new Label("Congratualations, you are now an engineer for lockheed martin\n making parking lots all over the world"); 
+Congrats.setLayoutX(10);
+Congrats.setLayoutY(200);
+Congrats.setFont(Congratsfont); 
 
 
 
@@ -61,6 +64,7 @@ back.setOnAction(goback);
 // Root adds
 sunroot.getChildren().add(sunsetview); 
 sunroot.getChildren().add(back); 
+sunroot.getChildren().add(Congrats); 
     }
 public Scene getscene() {
     return sunscene; 
